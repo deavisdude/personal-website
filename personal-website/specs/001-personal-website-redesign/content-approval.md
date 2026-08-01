@@ -2,8 +2,9 @@
 
 **Feature**: [spec.md](./spec.md)
 **Last reviewed**: 2026-08-01
-**Status**: Content facts and historical-source inventory updated from Davis's
-2026-08-01 approval; rendered-link, playability, and release checks remain open
+**Status**: Content facts, attribution deferrals, and release-direction
+decisions updated from Davis's 2026-08-01 approval; rendered-link, playability,
+and release checks remain open
 
 This record separates what is currently approved by the user from what must be
 confirmed before publication. It is the source of truth for content tasks and
@@ -31,15 +32,26 @@ must be updated before implementation consumes any open item.
   web stack chosen to support the approved visual direction.
 - Deployment direction: Vercel deployment with GitHub Actions build/workflow
   automation, following the restaurant-app operational model where applicable.
-- Device direction: broad traditional desktop/laptop browser support plus a
-  mobile-friendly experience for current iPhone and Android browsers.
+- Device direction: current and previous major Chrome, Edge, Firefox, and Safari
+  releases on desktop/laptop, plus current iPhone and Android browsers; older
+  or obsolete browsers receive progressive degradation rather than a guarantee.
 - Visual direction: dark foundation with Atlanta-red accents, using sports
   influence as atmosphere rather than copying team marks or proprietary assets.
+- Visual implementation direction: use best design judgment for exact
+  typography, spacing, breakpoints, motion, and dark/Atlanta-red token values;
+  final visual QA remains required for readability, contrast, and responsive
+  behavior.
 - Asset direction: text-first launch is acceptable; missing photos/screenshots
   are non-blocking and must be flagged during development for later handoff.
-- Analytics direction: lightweight analytics are desired; Phase 1 selects
-  `@vercel/analytics`, while event scope and exact privacy configuration remain
-  a release-review decision.
+- Analytics direction: enable `@vercel/analytics` for page views only. No custom
+  events, authentication, forms, or visitor-owned data service are in scope;
+  no additional app-level privacy settings are required for the read-only
+  experience.
+- Public social direction: Davis approved inclusion of his public LinkedIn
+  profile link. No resume destination is required until a public-safe URL is
+  supplied or approved.
+- Attribution direction: no additional collaborator names, collaborator roles,
+  or organizer relationships are available. Do not infer or publish them.
 - Historical-source direction: the public old-site repository and artifacts,
   public source repositories, supplied YouTube videos, the legacy Dropbox
   destination, and the UPBETOD Trello board may be cataloged as historical or
@@ -54,10 +66,24 @@ must be updated before implementation consumes any open item.
 | Restaurant Tracker | NON-BLOCKING | Screenshot/description may be supplied later; use text-first placeholder treatment |
 | Football Idle Game | NON-BLOCKING | Screenshot/description may be supplied later; use text-first placeholder treatment |
 | BBQ App | APPROVED | Davis is the sole creator; TAG internship partnership and Atlanta BBQ Club origin are approved for public-safe wording |
-| Support / Flux / Battle / UPBETOD roles | PARTIAL / ROLE APPROVED | Davis's roles are approved; collaborator names and final organizer/attribution wording remain unresolved where not supplied |
-| Historical and official links | PARTIAL / CANDIDATES RECORDED | Supplied source candidates and read-only checks are recorded; final rendered-link audit and keep/remove decisions remain open |
+| Support / Flux / Battle / UPBETOD roles | APPROVED WITH EXPLICIT DEFERRAL | Davis's roles and supported team/event context are approved; no collaborator or organizer names/relationships are available, so none will be inferred or published |
+| Historical and official links | PUBLICATION POLICY APPROVED / AUDIT OPEN | Visitor-facing keep/remove policy is recorded below; T034 still must verify every rendered destination, final URL, redirect behavior, and fallback |
 | Resume | APPROVED / INTERIM | Current LinkedIn-export PDF may be published; replace with polished resume later |
-| Technical and visual brief | PARTIAL | Vite/React, Vercel, GitHub Actions, device direction, dark/red direction, assets, and the analytics package are selected; visual tokens and final analytics/privacy settings remain |
+| Technical and visual brief | APPROVED WITH IMPLEMENTATION GUIDANCE | Vite/React, Vercel, GitHub Actions, reasonable evergreen browser support, dark/red direction, assets, page-view analytics, and read-only privacy scope are approved; rendered visual and deployment checks remain |
+
+### 2026-08-01 release and attribution decision update
+
+- The public LinkedIn destination is approved for the identity rail:
+  `https://www.linkedin.com/in/davisodom`. It is recorded as a social link in
+  `src/content/siteContent.js`; T034 still verifies the exact rendered control
+  and final destination behavior.
+- No collaborator names, collaborator roles, or organizer relationships were
+  supplied in the available records. The site will publish only Davis's
+  approved role, supported team-size/event context, and source-backed project
+  facts. It will not guess named attribution.
+- The release uses page-view analytics only through `@vercel/analytics`; no
+  custom events or visitor-owned data are added, and no additional app-level
+  privacy settings are needed for the read-only experience.
 
 ## T003: BBQ App evidence and approved wording
 
@@ -92,17 +118,17 @@ interval, or playability claim.
 
 | Project | Event/profile/repository date sources | Davis role and known team context | Attribution decision and publication treatment |
 | --- | --- | --- | --- |
-| Support | Old-site manifest: two-day Southern Polytechnic State University Summer Game Jam project; public repository and legacy Web Player artifact. | `APPROVED` — Davis was an SE. The old-site manifest says the team had seven developers; collaborator names were not supplied. | Davis's role and seven-person team context may be published. Named collaborator and organizer wording remains `PENDING ATTRIBUTION REVIEW`; keep archive/download-only treatment unless a modern browser build is independently verified. |
-| Flux | Old-site manifest: made at the 2013 HHS Game Jam at Southern Polytechnic State University in Atlanta; one of five winning submissions. Public `CDCJam-14` source repository and legacy Web Player artifact; legacy Dropbox download is recorded in `link-audit.md`. | `APPROVED` — Davis was an SE. No collaborator names were supplied. | Event and winning-submission facts may be attributed to the old-site manifest. Named collaborator/organizer wording remains `PENDING ATTRIBUTION REVIEW`; historical/download treatment only, with no play claim. |
-| Battle of the Masses | Old-site index links the Global Game Jam entry; supplied historical YouTube video and public Global Game Jam reference are source candidates. | `APPROVED` — Davis was Design and Lead Programmer. No collaborator names were supplied. | Role may be published. Team, collaborator, and final event-attribution wording remain `PENDING ATTRIBUTION REVIEW`; historical-video/reference treatment only, with no play claim. |
-| UPBETOD | Public `UPBETOD` repository, public Trello board, and supplied historical YouTube video. The repository README describes a Unity local-multiplayer, controller-based space shooter made for a game jam under time constraints. | `APPROVED` — Davis was an SE. No collaborator names were supplied. | Role and source descriptions may be published. Collaborator and final event-attribution wording remain `PENDING ATTRIBUTION REVIEW`; repository/Trello/video evidence only, with no play claim. |
+| Support | Old-site manifest: two-day Southern Polytechnic State University Summer Game Jam project; public repository and legacy Web Player artifact. | `APPROVED` — Davis was an SE. The old-site manifest says the team had seven developers; collaborator names were not supplied. | Davis's role and seven-person team context may be published. Named collaborator and organizer attribution is explicitly deferred because no names or relationships were supplied; keep archive/download-only treatment unless a modern browser build is independently verified. |
+| Flux | Old-site manifest: made at the 2013 HHS Game Jam at Southern Polytechnic State University in Atlanta; one of five winning submissions. Public `CDCJam-14` source repository and legacy Web Player artifact; legacy Dropbox download is recorded in `link-audit.md`. | `APPROVED` — Davis was an SE. No collaborator names were supplied. | Event and winning-submission facts may be attributed to the source record. Named collaborator/organizer attribution is explicitly deferred; historical/download treatment only, with no play claim. |
+| Battle of the Masses | Old-site index links the Global Game Jam entry; supplied historical YouTube video and public Global Game Jam reference are source candidates. | `APPROVED` — Davis was Design and Lead Programmer. No collaborator names were supplied. | Role may be published. Team, collaborator, and final event attribution beyond the supported Global Game Jam reference are explicitly deferred; historical-video/reference treatment only, with no play claim. |
+| UPBETOD | Public `UPBETOD` repository, public Trello board, and supplied historical YouTube video. The repository README describes a Unity local-multiplayer, controller-based space shooter made for a game jam under time constraints. | `APPROVED` — Davis was an SE. No collaborator names were supplied. | Role and source descriptions may be published. Collaborator and organizer attribution is explicitly deferred; repository/Trello/video evidence only, with no play claim. |
 
-**Exact remaining T004 approval**: Davis's roles above are approved. For each
-team project, collaborator names and roles, whether a named organization should
-be described as an organizer or collaborator, and final attribution text remain
-open when they were not supplied. Do not infer solo authorship, collaborator
-names, or organizational relationships from repository ownership or source
-links.
+**T004 attribution decision**: Davis's roles above are approved. No additional
+collaborator names, collaborator roles, or organizer relationships are
+available in the supplied records, and Davis has confirmed they should not be
+inferred. Publish the supported role, team-size/event facts, and source-backed
+historical context only. Revisit named attribution only if Davis supplies new
+evidence; it is not a current content blocker.
 
 ## Approved source inventory and artifact boundary
 

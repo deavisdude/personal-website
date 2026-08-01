@@ -81,12 +81,12 @@ navigation destination without using a resume or contact funnel.
 
 ### Implementation for User Story 1
 
-- [ ] T014 [P] [US1] Populate the approved profile, career context, and current-first experience data in `src/content/siteContent.js`
-- [ ] T015 [US1] Implement the desktop identity rail, opening thesis, Georgia/location phrasing, and public social links in `src/components/IdentityRail.jsx`
-- [ ] T016 [US1] Implement the About and current-first Experience sections with employer-safe wording in `src/components/ExperienceSection.jsx`
-- [ ] T017 [US1] Implement anchored section navigation and active-section feedback for desktop and mobile in `src/components/SiteShell.jsx`
-- [ ] T018 [US1] Compose the P1 page flow and identity-to-experience hierarchy in `src/App.jsx`
-- [ ] T019 [US1] Record the P1 identity and current-context result as `PASS`, `BLOCKED`, or `FAIL` in `specs/001-personal-website-redesign/qa/p1-identity.md`
+- [x] T014 [P] [US1] Populate the approved profile, career context, and current-first experience data in `src/content/siteContent.js`
+- [x] T015 [US1] Implement the desktop identity rail, opening thesis, Georgia/location phrasing, and public social links in `src/components/IdentityRail.jsx`
+- [x] T016 [US1] Implement the About and current-first Experience sections with employer-safe wording in `src/components/ExperienceSection.jsx`
+- [x] T017 [US1] Implement anchored section navigation and active-section feedback for desktop and mobile in `src/components/SiteShell.jsx`
+- [x] T018 [US1] Compose the P1 page flow and identity-to-experience hierarchy in `src/App.jsx`
+- [x] T019 [US1] Record the P1 identity and current-context result as `PASS`, `BLOCKED`, or `FAIL` in `specs/001-personal-website-redesign/qa/p1-identity.md`
 
 **Checkpoint**: User Story 1 is independently demonstrable as a coherent
 identity and current-career page.

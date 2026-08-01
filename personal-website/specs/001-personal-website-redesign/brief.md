@@ -2,8 +2,8 @@
 
 **Feature**: [Davis Odom Personal Website Redesign](./spec.md)
 **Updated**: 2026-08-01
-**Status**: Direction and implementation stack approved; visual token values and
-content approvals remain open
+**Status**: Direction, implementation stack, release defaults, and visual
+direction approved; rendered release evidence remains open
 
 ## Approved technical direction
 
@@ -13,13 +13,17 @@ content approvals remain open
 - Deploy the public site on Vercel.
 - Use GitHub Actions for build, quality checks, and deployment workflow as
   appropriate, mirroring the restaurant-app operational model.
-- Support traditional laptop/desktop browsers broadly, with a mobile-friendly
-  experience for current iPhone and Android browsers.
+- Support current evergreen laptop/desktop browsers broadly, plus current
+  iPhone and Android browsers. The reasonable support baseline is the current
+  and previous major release of Chrome, Edge, Firefox, and Safari, with
+  progressive degradation for older browsers rather than an IE/obsolete-browser
+  guarantee.
 - Keep content static or content-driven unless a later requirement justifies
   persistence or a service.
-- Include lightweight analytics with privacy-conscious configuration; the Phase
-  1 implementation selects `@vercel/analytics`, with final event and privacy
-  settings still subject to release review.
+- Include lightweight page-view analytics through `@vercel/analytics`. No
+  custom event stream, authentication, form, or visitor-owned data service is
+  in scope. No additional app-level privacy settings are required for this
+  read-only experience.
 
 ## Phase 1 implementation selection
 
@@ -29,9 +33,10 @@ content approvals remain open
 - **Styling system**: Plain CSS with shared custom properties in the planned
   `src/index.css` and `src/App.css`; no additional styling framework is needed
   for the single-page content-driven site.
-- **Analytics**: `@vercel/analytics`, enabled only through an explicit later
-  presentation integration and subject to the release privacy review. No
-  secret, project ID, or visitor-owned data service is committed here.
+- **Analytics**: `@vercel/analytics` is enabled in the presentation layer for
+  page views only. No custom events, secret, project ID, or visitor-owned data
+  service is committed here; final release QA still checks the deployed
+  artifact and provider integration.
 - **Deployment**: Vercel's static Vite build, emitted to `dist/`, with the
   repository workflow running `npm ci`, `npm test`, and `npm run build`.
 - **CI runtime**: GitHub Actions on Node.js 22.x with the committed npm lockfile
@@ -50,6 +55,9 @@ content approvals remain open
   identity rather than two separate portfolios.
 - The Brittany Chiang site remains a structural reference for hierarchy and
   focus, not a source for copied code, branding, colors, or content.
+- Exact typography, spacing, breakpoints, motion, and dark/Atlanta-red token
+  values are an implementation decision within this approved direction; final
+  visual QA must still verify readability, contrast, and responsive behavior.
 
 ## Asset strategy
 
@@ -60,13 +68,13 @@ content approvals remain open
   and flag Davis; continue all independent work.
 - Davis may supply screenshots, photos, or specific project call-outs later.
 
-## Decisions still open
+## Release checks still open
 
 - Final TypeScript migration timing and component-level implementation details.
-- Exact typography, red/neutral color values, spacing scale, breakpoints, and
-  motion tokens after visual exploration.
-- Analytics event scope, retention, and final privacy configuration.
-- Final browser support matrix and production preview checks.
+- Rendered visual review at the approved desktop, tablet, narrow-mobile, and
+  320 CSS-pixel checks.
+- Final browser smoke checks across the reasonable evergreen support baseline.
+- Exact Vercel production/preview target and deployment evidence.
 
 ## Content defaults
 

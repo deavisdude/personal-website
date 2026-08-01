@@ -27,7 +27,7 @@ evidence for any candidate remain unavailable in this pass.
 | Candidate build load and controls | `BLOCKED` | Legacy artifact URLs and public source repositories are recorded, but no current public build or approved local reproducible build has been supplied for this record. |
 | Core loop and completion/exit | `BLOCKED` | No candidate has been run in the supported browser matrix. |
 | Failure/reload behavior | `BLOCKED` | No candidate has been run, so error behavior has not been observed. |
-| Current-browser evidence | `BLOCKED` | The final browser support matrix is still open in `brief.md`; no dated browser session is recorded. |
+| Current-browser evidence | `APPROVED BASELINE / EXECUTION OPEN` | `brief.md` now approves current and previous major Chrome, Edge, Firefox, and Safari releases plus current iPhone/Android browsers; no project candidate has yet been run through that matrix. |
 
 No `FAIL` is recorded: no candidate execution was performed. `BLOCKED` means
 the prerequisite or observation is missing; it does not mean that a candidate

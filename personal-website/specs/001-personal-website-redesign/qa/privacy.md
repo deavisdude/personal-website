@@ -9,20 +9,20 @@
 
 The planning documents define the public-safe boundary, but this record is not
 a source or production-build audit. The redesign content records, final
-rendered copy, production output, and final analytics/privacy settings have not
-been audited here. No zero-findings or production-safety claim is made.
+rendered copy, production output, and deployed analytics behavior have not been
+audited here. No zero-findings or production-safety claim is made.
 
 ## Current result
 
 | Area | Status | Evidence or blocker |
 | --- | --- | --- |
 | Privacy boundary in planning documents | `PASS` at planning level | The approved exclusions cover phone, personal email, exact location, sensitive family details, and confidential employer information. |
-| Approved final content | `BLOCKED` | BBQ App wording and sole-creator role, plus the supplied archive roles, are recorded as approved; collaborator/organizer attribution and final rendered-copy review remain open. |
+| Approved final content | `PARTIAL` | BBQ App wording and sole-creator role, supplied archive roles, and the explicit no-named-attribution deferral are recorded; final rendered-copy review remains open. |
 | Source-content search | `BLOCKED` | The redesign content source is not yet the subject of the required final audit. |
 | Production-build search | `BLOCKED` | The release artifact and deployed target are not available in this record. |
 | Private-source/URL review | `BLOCKED` | WIP and project records/links have not completed the rendered and source review. |
 | Placeholder/unsupported-claim review | `BLOCKED` | Story implementation and approved-vs-published copy comparison are pending. |
-| Analytics/privacy configuration | `BLOCKED` | `@vercel/analytics` is selected, but event scope, retention, and final privacy settings remain open. |
+| Analytics/privacy configuration | `APPROVED SCOPE / DEPLOYMENT CHECK OPEN` | `@vercel/analytics` is integrated for page views only; no custom events or visitor-owned data are in scope, and no additional app-level privacy settings are required for the read-only experience. Deployed-artifact behavior still needs verification. |
 
 No `FAIL` is recorded: no final source/build privacy audit was run. `BLOCKED`
 does not mean that the eventual audit will pass.
@@ -35,8 +35,9 @@ does not mean that the eventual audit will pass.
   collaborator/organizer attribution are approved or explicitly deferred.
 - A production-like build exists at the path emitted by the approved Vite
   workflow (expected `dist/`) and the exact deployment/preview URL is recorded.
-- The final analytics integration and privacy configuration are documented;
-  no unapproved data service or secret-bearing value may be introduced.
+- The approved page-view-only analytics integration is present in the final
+  artifact; no unapproved data service or secret-bearing value may be
+  introduced.
 - The reviewer can inspect source, generated output, rendered text, link
   destinations, and deployment configuration without logging OAuth payloads,
   tokens, or other secrets.
@@ -56,7 +57,7 @@ status.
 | PRIV-04 | Placeholder text | Search rendered/source output for `TODO`, `TBD`, `lorem`, `placeholder`, `sample text`, `replace me`, and equivalent release-only copy. | No stale placeholder is visible; any explicit deferral is intentional and labeled. | `BLOCKED` |
 | PRIV-05 | Unsupported claims | Compare names, roles, dates, metrics, ownership, attribution, statuses, and play labels in rendered output against `content-approval.md`, `data-model.md`, and the link/playability evidence. | No fabricated or silently inferred claim remains. | `BLOCKED` |
 | PRIV-06 | WIP boundaries | Inspect Restaurant Tracker and Football Idle Game copy/media/links from source and the rendered page. | Only approved high-level copy/media is present; no private implementation detail or production-readiness claim appears. | `BLOCKED` |
-| PRIV-07 | BBQ/archive approvals | Inspect BBQ App, Support, Flux, Battle of the Masses, and UPBETOD wording and attribution. | Approved BBQ wording/role and supplied archive roles are preserved; missing collaborator or organizer attribution is deferred or explicitly labeled `BLOCKED`, and no collaborator is guessed. | `BLOCKED` |
+| PRIV-07 | BBQ/archive approvals | Inspect BBQ App, Support, Flux, Battle of the Masses, and UPBETOD wording and attribution. | Approved BBQ wording/role and supplied archive roles are preserved; the unavailable collaborator/organizer details are explicitly deferred, and no collaborator is guessed. | `BLOCKED` |
 | PRIV-08 | Build/deployment parity | Run the same privacy searches against the production artifact and the exact deployed target, then compare visible copy. | Source, build, and deployed page agree on the approved safe content. | `BLOCKED` |
 
 Suggested command pattern after implementation (adjust paths only to the

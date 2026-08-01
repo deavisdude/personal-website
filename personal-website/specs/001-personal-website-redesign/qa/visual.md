@@ -9,15 +9,16 @@
 
 This record captures the visual review protocol and the approved direction. It
 does not claim that the redesigned page, CSS tokens, responsive shell, media
-fallbacks, or production build have been visually reviewed. The final token
-values and browser/viewport matrix remain open in `brief.md`.
+fallbacks, or production build have been fully visually reviewed. The visual
+direction and implementation freedom are approved in `brief.md`; rendered
+evidence remains open.
 
 ## Current result
 
 | Area | Status | Evidence or blocker |
 | --- | --- | --- |
 | Visual direction | `PASS` at planning level | Dark foundation, Atlanta/Georgia-red accent, polished/serious/warm tone, and original branding are approved directions. |
-| Exact visual tokens | `BLOCKED` | Typography, color values, spacing, breakpoints, and motion tokens remain open. |
+| Exact visual tokens | `APPROVED DIRECTION / REVIEW OPEN` | Exact typography, color values, spacing, breakpoints, and motion values may be selected using best design judgment within the approved dark/Atlanta-red direction; T037 still reviews the rendered result. |
 | Rendered hierarchy | `BLOCKED` | The redesigned page has not been opened for visual review. |
 | Desktop/tablet/mobile layout | `BLOCKED` | No screenshots or responsive browser session are recorded. |
 | Optional-media fallback | `BLOCKED` | No project card implementation has been reviewed with media enabled and disabled. |

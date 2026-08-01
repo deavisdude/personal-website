@@ -239,15 +239,17 @@ horizontal scrolling or a broken-media dead end.
 - The existing Create React App source is disposable. A modern web stack will be
   selected for the approved design, deployed on Vercel, and built/checked through
   GitHub Actions.
-- The initial device target is broad desktop/laptop browser support plus a
-  mobile-friendly experience for current iPhone and Android browsers.
-- The visual direction starts dark with Atlanta-red accents; exact tokens and
-  framework remain implementation decisions.
-- Lightweight analytics are desired, but provider, event scope, and privacy
-  configuration remain to be selected.
-- Davis will provide or approve the final role label, thesis, WIP descriptions
-  and screenshots, BBQ App wording, project roles, and attribution before those
-  details are published.
+- The initial device target is current and previous major Chrome, Edge, Firefox,
+  and Safari releases on desktop/laptop plus current iPhone and Android
+  browsers; older or obsolete browsers receive progressive degradation.
+- The visual direction starts dark with Atlanta-red accents; exact tokens remain
+  implementation decisions within that approved direction.
+- Lightweight page-view analytics use `@vercel/analytics`; no custom events,
+  authentication, forms, or visitor-owned data are in scope, and no additional
+  app-level privacy settings are required for the read-only experience.
+- Davis has approved the role label, thesis, current employer-safe context,
+  BBQ App wording, supplied project roles, the public LinkedIn destination, and
+  the explicit deferral of unavailable collaborator/organizer attribution.
 - Public LinkedIn, GitHub, official game-jam, and historical sources can change;
   the site will preserve a verification date and a fallback label rather than
   implying permanence.

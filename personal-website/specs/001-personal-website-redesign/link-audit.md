@@ -7,16 +7,56 @@
 
 ## Evidence boundary
 
-This is the baseline audit created before the redesign's links are rendered.
-The rows below preserve destinations identified by the planning research and
-the user-supplied 2026-08-01 read-only URL checks. Source-level HTTP 200 and
+This is the foundational audit for the full archive/release link pass. The
+rows below preserve destinations identified by the planning research and the
+user-supplied 2026-08-01 read-only URL checks. Source-level HTTP 200 and
 redirect observations are recorded explicitly, but they are not verification
-of an exact rendered control, browser behavior, or playability. No link is
-approved as a current-site link or playable build from this file alone.
+of an exact rendered control, browser behavior, or playability. The P1
+identity rail now has a local rendered-control observation for LinkedIn; the
+archive/project link inventory remains incomplete until T034.
 
 The final audit must include every visible external/project link, including
 social or resume links, and must use the actual rendered control rather than a
 URL copied from planning notes.
+
+## 2026-08-01 publication decisions
+
+The keep/remove decision applies to visitor-facing project-card links; source
+evidence stays in this audit so provenance is not lost.
+
+### Keep as visitor-facing archive/source links
+
+- **Support:** `SUP-REPO`, `SUP-GGDA`, and `SUP-ITCH` — label them as a public
+  repository, historical announcement, and download page respectively.
+- **Flux:** `CDC-REPO`, `FLUX-GGDA`, and `FLUX-DROPBOX` — label them as a public
+  repository, historical review, and legacy download/archive respectively.
+- **Battle of the Masses:** `BATTLE-GGJ` and `BATTLE-YOUTUBE` — label them as a
+  historical Global Game Jam reference and historical video.
+- **UPBETOD:** `UPBETOD-REPO`, `UPBETOD-TRELLO`, and `UPBETOD-YOUTUBE` — label
+  them as repository, historical project board, and historical video evidence.
+- **Identity:** the approved public LinkedIn profile is included as
+  `SOCIAL-LINKEDIN`. No resume URL is added until a public-safe destination is
+  supplied or approved.
+
+### Remove from visitor-facing project cards, retain in this audit as provenance
+
+- `OLD-REPO` and `OLD-INDEX` are source-archive evidence, not primary project
+  destinations; keep them audit-only unless a later archive view has a clear
+  “legacy source archive” affordance.
+- `FLUX-MANIFEST`, `FLUX-UNITY`, `SUP-MANIFEST`, and `SUP-UNITY` are legacy
+  Unity Web Player pages/artifacts. Do not expose them as ordinary project
+  links or playable controls; retain their evidence and fallback wording here.
+
+### Redirect checks still required
+
+- The old Flux Dropbox URL (`FLUX-DROPBOX`) already has a source-level redirect
+  observation to the Dropbox folder recorded in its row. T034 must activate the
+  exact rendered control and confirm the final URL/label before marking it
+  `redirected`.
+- No other redirect chain is approved from the planning records. T034 must
+  check the final URL for every kept link, including LinkedIn, and record any
+  redirect or unavailable result. A source-level HTTP 200 or oEmbed response
+  is not enough.
 
 ## Current result
 
@@ -25,10 +65,10 @@ URL copied from planning notes.
 | Audit schema | `PASS` at planning level | The table includes destination type, status, source, checked date, final URL/redirect behavior, and fallback. |
 | Planning-source inventory | `PASS` as an inventory | The known research destinations are recorded below as candidates, not as live-verified links. |
 | Source-level read-only URL checks | `PASS (limited)` | On 2026-08-01, the supplied checks observed HTTP 200 for the four GitHub old-site artifact pages, legacy Dropbox URL, Trello board, and two YouTube oEmbed endpoints; Dropbox's final redirect target is recorded below. |
-| Rendered-link inventory | `BLOCKED` | The redesigned content/components are not yet rendered for enumeration. |
+| Rendered-link inventory | `PARTIAL` | The P1 identity rail and LinkedIn control were rendered locally; the full archive/project inventory is not yet rendered for enumeration. |
 | T034 rendered URL/redirect audit | `BLOCKED` | T034 has not run a dated request/browser check for each visible link from the exact release candidate. Source-level checks below cannot substitute for this. |
 | T035 playability linkage | `BLOCKED` | T035 has not run any candidate from a rendered control through load, core loop, completion/exit, and failure/reload checks. |
-| Social/resume links | `BLOCKED` | Final public destinations and rendered labels remain an implementation/review decision. |
+| Social/resume links | `PARTIAL` | The public LinkedIn URL is approved and implemented; its exact rendered destination check is pending. Resume remains intentionally omitted because no public-safe resume URL is supplied. |
 
 ## Status and destination rules
 
@@ -73,7 +113,8 @@ status, source, check date, and fallback after T034. Do not change a row to
 | SUP-ITCH | Support itch.io page | `https://skateborden.itch.io/support` | `download` | `unverified` | `research.md` public evidence | `2026-08-01 (candidate; live/rendered check pending)` | Not checked in supplied evidence | `Download-only or unavailable label; no browser-play promise.` | Download availability and browser play require separate checks. |
 | FLUX-GGDA | Flux GGDA review | `https://www.ggda.org/news/ggda-2014-in-review` | `historical` | `unverified` | `research.md` public evidence | `2026-08-01 (candidate; live/rendered check pending)` | Not checked in supplied evidence | `Historical context; retain text if the destination is unavailable.` | The legacy Web Player build is not treated as a live demo. |
 | BATTLE-GGJ | Battle of the Masses Global Game Jam reference | `https://globalgamejam.org/2016/games/battle-masses` | `historical` | `unverified` | `research.md` public evidence | `2026-08-01 (candidate; live/rendered check pending)` | Not checked in supplied evidence | `Historical-link label with project context; no play control.` | Current health and final attribution require later review. |
-| SOCIAL-OR-RESUME | Approved social/resume destination | Not supplied in this baseline | `social`/`official` | `blocked` | `content-approval.md` and implementation review | `2026-08-01 (record date; target pending)` | Not applicable | `Omit until a public-safe approved destination exists.` | No URL is invented here. |
+| SOCIAL-LINKEDIN | Davis public LinkedIn profile | `https://www.linkedin.com/in/davisodom` | `social` | `unverified` | `content-approval.md` and Davis-approved public destination | `2026-08-01 (implemented; rendered-link check pending)` | Not checked from the rendered control | `Public LinkedIn profile; omit the control if the approved destination becomes unavailable.` | The URL is approved for inclusion; source discovery does not replace the final rendered-control audit. |
+| RESUME | Public resume destination | Not supplied | `official` | `blocked` | `content-approval.md` interim-resume decision | `2026-08-01 (target not supplied)` | Not applicable | `Omit until a public-safe resume URL is supplied or approved.` | The LinkedIn profile is not silently treated as a resume download. |
 
 ## Repeatable final audit procedure
 
@@ -112,7 +153,8 @@ the table.
 
 | Date | Build/URL | Links enumerated | Checks performed | Result | Reviewer/artifact |
 | --- | --- | --- | --- | --- | --- |
-| 2026-08-01 | Current site not available; source URLs only | Source candidates listed above | Supplied read-only HTTP 200 checks for four GitHub old-site artifact pages, legacy Dropbox URL, Trello board, and two YouTube oEmbed endpoints; Dropbox redirect recorded | `PARTIAL source evidence; rendered audit and playability BLOCKED` | T013 update; T034 and T035 pending. |
+| 2026-08-01 | `http://127.0.0.1:5173/` local P1 preview | LinkedIn identity control plus About/Experience anchors | Fresh rendered tab exposed exactly one `https://www.linkedin.com/in/davisodom` anchor with `target="_blank"` and `rel="noreferrer noopener"`; clean post-fix console; 320×800 viewport kept `scrollWidth` at 320 | `PARTIAL; LinkedIn control rendered, external redirect and full archive audit BLOCKED` | T019 local evidence; T034/T035 pending. |
+| 2026-08-01 | Current site archive candidates | Source candidates listed above | Supplied read-only HTTP 200 checks for four GitHub old-site artifact pages, legacy Dropbox URL, Trello board, and two YouTube oEmbed endpoints; Dropbox redirect recorded | `PARTIAL source evidence; rendered archive audit and playability BLOCKED` | T013/T034 baseline evidence. |
 
 ## Handoff
 

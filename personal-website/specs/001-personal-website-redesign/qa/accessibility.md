@@ -20,7 +20,7 @@ content are not yet available as a validated user journey in this record.
 | Rendered landmarks and heading order | `BLOCKED` | The redesigned page has not been opened for this audit. |
 | Keyboard traversal and skip path | `BLOCKED` | No browser session or implemented shell evidence is recorded. |
 | Focus visibility and accessible names | `BLOCKED` | No rendered controls have been inspected. |
-| 320 CSS-pixel responsive behavior | `BLOCKED` | The final minimum/browser matrix is still open and no responsive run has occurred. |
+| 320 CSS-pixel responsive behavior | `PARTIAL` | The approved P1 identity run confirmed a 320×800 viewport with no horizontal overflow and a visible LinkedIn control; the full accessibility journey remains for T038. |
 | Reduced-motion behavior | `BLOCKED` | No implementation or preference-enabled browser run has been checked. |
 | Optional-media and external-destination fallback | `BLOCKED` | Project components/content are not yet available for a disabled-media journey. |
 

@@ -17,7 +17,7 @@ implementation and later QA tasks remain prerequisites.
 | Required area | Status | Exact prerequisite/evidence still needed |
 | --- | --- | --- |
 | Shared content/link/document/shell foundation | `BLOCKED` | T008-T012 are implemented and focused checks pass; the foundation still needs integration into the user-story flow and final release review. |
-| P1 identity and current context | `BLOCKED` | Implement the P1 flow, then record the independent identity result in `qa/p1-identity.md`. |
+| P1 identity and current context | `PASS (T019)` | `qa/p1-identity.md` records the local rendered identity, current-first experience, LinkedIn control, desktop/mobile checks, and clean post-fix browser console. |
 | P2 work/archive evidence | `BLOCKED` | The approved/deferred records exist in the content source, but project cards/archive rendering and the requested project-by-project result are not complete. |
 | P3 accessible browsing | `BLOCKED` | Implement narrow navigation/personal context and run the keyboard/responsive journey. |
 | Link audit | `BLOCKED` | T034 must enumerate every rendered external/project link and record final URL, redirects, type, source, status, date, and fallback. |
@@ -26,7 +26,7 @@ implementation and later QA tasks remain prerequisites.
 | Accessibility review | `BLOCKED` | T038 must complete keyboard, headings, focus, skip path, reduced-motion, contrast, and overflow checks. |
 | Privacy/content review | `BLOCKED` | T039 must compare source and production output against approvals and public-safe exclusions. |
 | Build/metadata/quickstart review | `BLOCKED` | T040 must run the final build, test runner, metadata review, and quickstart scenarios. |
-| Content approval and deferrals | `BLOCKED` | T041 must capture final wording, explicit deferrals, and remaining blockers; BBQ wording/role and the supplied archive roles are recorded, while collaborator/organizer attribution remains open. |
+| Content approval and deferrals | `PARTIAL` | BBQ wording/role, supplied archive roles, and the explicit no-named-attribution deferral are recorded; T041 still captures final wording and release blockers. |
 | Davis final approval | `BLOCKED` | Davis must review the final content/design artifact and sign each required area. |
 
 No `FAIL` is recorded because the feature/release review has not been run. A
@@ -38,12 +38,12 @@ No `FAIL` is recorded because the feature/release review has not been run. A
   `data-model.md`, and `contracts/content-entry.md`.
 - A reproducible production build and exact preview/deployed URL are available;
   the tested artifact matches the artifact proposed for release.
-- The final browser and viewport matrix, exact visual tokens, analytics scope,
-  and privacy configuration are approved in the brief/release review.
+- The reasonable evergreen browser baseline, visual direction/token freedom,
+  page-view-only analytics scope, and read-only privacy scope are approved in
+  the brief/release review; final rendered and deployed checks remain.
 - The BBQ App wording/role/relationship and the supplied roles for Support,
-  Flux, Battle of the Masses, and UPBETOD are recorded; any collaborator,
-  organizer, attribution, and source decisions not supplied by Davis are
-  explicitly deferred rather than inferred.
+  Flux, Battle of the Masses, and UPBETOD are recorded; unavailable
+  collaborator/organizer details are explicitly deferred rather than inferred.
 - `link-audit.md`, `qa/playability.md`, `qa/accessibility.md`,
   `qa/privacy.md`, and `qa/visual.md` contain dated evidence rather than only
   planning placeholders.
@@ -68,7 +68,7 @@ No `FAIL` is recorded because the feature/release review has not been run. A
 
 | Area | Result | Reviewer/date | Evidence reference | Notes/remaining action |
 | --- | --- | --- | --- | --- |
-| Content and provenance | `BLOCKED` | Not assigned | `content-approval.md`, project evidence | BBQ wording/role and supplied archive roles are recorded; implementation and unresolved collaborator/organizer attribution remain. |
+| Content and provenance | `PARTIAL` | Not assigned | `content-approval.md`, project evidence | BBQ wording/role, supplied archive roles, and explicit attribution deferrals are recorded; final rendered-copy review remains. |
 | Links and playability | `BLOCKED` | Not assigned | `link-audit.md`, `qa/playability.md` | No live/browser evidence recorded. |
 | Accessibility and responsive behavior | `BLOCKED` | Not assigned | `qa/accessibility.md` | No rendered journey recorded. |
 | Visual and media fallbacks | `BLOCKED` | Not assigned | `qa/visual.md` | Tokens/matrix/rendered review pending. |

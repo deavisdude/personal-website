@@ -30,6 +30,20 @@
  * @property {string} detail
  */
 
+const linkedInProfileLink = {
+  id: "davis-linkedin",
+  url: "https://www.linkedin.com/in/davisodom",
+  type: "social",
+  label: "LinkedIn profile",
+  source: "Davis-approved public LinkedIn profile",
+  status: "unverified",
+  checkedAt: "2026-08-01",
+  fallbackLabel:
+    "Public LinkedIn profile; current profile content may change.",
+  verificationNote:
+    "Davis approved inclusion of this public profile URL; exact rendered-control and redirect verification remains part of T034.",
+};
+
 export const profile = {
   name: "Davis Odom",
   roleLabel: "Senior Software Engineer",
@@ -39,7 +53,7 @@ export const profile = {
   careerContext:
     "Current software-engineering and developer-tools context at The Home Depot.",
   interests: [],
-  socialLinks: [],
+  socialLinks: [linkedInProfileLink],
   resumeLink: null,
 };
 
@@ -49,13 +63,14 @@ export const experienceItems = [
     role: profile.roleLabel,
     dateLabel: "Current",
     summary:
-      "Software engineering and developer-tools work at The Home Depot, described only at a general public-safe level.",
+      "Current software-engineering and developer-tools context at The Home Depot.",
     visibilityNotes:
       "Do not publish team, project, incident, metric, architecture, or other confidential employer details.",
   },
 ];
 
 const linkEvidenceRecords = [
+  linkedInProfileLink,
   {
     id: "old-site-source-archive",
     url: "https://github.com/deavisdude/My-Site",
@@ -354,10 +369,7 @@ export const projectEntries = [
     },
     status: "download-only",
     links: linksFor(
-      "old-site-source-archive",
       "support-repository",
-      "support-old-site-page",
-      "support-old-site-download",
       "support-award-announcement",
       "support-download",
     ),
@@ -365,7 +377,7 @@ export const projectEntries = [
     fallback:
       "Legacy Unity Web Player/download archive context only; no current browser play is claimed.",
     visibilityNotes:
-      "Role and team-size wording are approved. Keep every destination labeled as repository, historical, or legacy download; do not render a play control.",
+      "Role and team-size wording are approved. Render only the public repository, historical announcement, and download-page links; retain legacy Unity artifacts as audit-only provenance and do not render a play control.",
   },
   {
     id: "flux",
@@ -395,10 +407,7 @@ export const projectEntries = [
     },
     status: "download-only",
     links: linksFor(
-      "old-site-source-archive",
       "flux-repository",
-      "flux-old-site-page",
-      "flux-old-site-download",
       "flux-dropbox-download",
       "flux-history",
     ),
@@ -406,7 +415,7 @@ export const projectEntries = [
     fallback:
       "Legacy Unity Web Player/download archive context only; no current browser play is claimed.",
     visibilityNotes:
-      "Role, winning-submission context, and SPSU event wording are approved. The legacy page/build and download remain historical evidence, never a browser-play control.",
+      "Role, winning-submission context, and SPSU event wording are approved. Render the public repository, historical review, and legacy download/archive only; the old-site page/build remain audit-only evidence, never a browser-play control.",
   },
   {
     id: "battle-of-the-masses",

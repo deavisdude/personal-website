@@ -143,6 +143,23 @@ function normalizeNavigation(items, sections) {
   }, []);
 }
 
+function hashTargetId(targetIds) {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
+  let hash = window.location.hash.slice(1);
+
+  try {
+    hash = decodeURIComponent(hash);
+  } catch {
+    return null;
+  }
+
+  const targetId = normalizeId(hash, '');
+  return targetIds.includes(targetId) ? targetId : null;
+}
+
 /**
  * Shared page frame for the long-form site.
  *
@@ -218,6 +235,104 @@ function SiteShell({
     navigation === undefined ? derivedNavigation : navigation,
     resolvedSections,
   );
+  const navigationTargetIds = resolvedNavigation.map((item) => item.targetId);
+  const navigationTargetKey = navigationTargetIds.join('|');
+  const [activeTargetId, setActiveTargetId] = React.useState(
+    () => hashTargetId(navigationTargetIds) ?? navigationTargetIds[0] ?? null,
+  );
+
+  React.useEffect(() => {
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
+      return undefined;
+    }
+
+    const targetIds = navigationTargetIds;
+    const targetIdSet = new Set(targetIds);
+    const updateFromHash = () => {
+      setActiveTargetId(hashTargetId(targetIds) ?? targetIds[0] ?? null);
+    };
+
+    updateFromHash();
+    window.addEventListener('hashchange', updateFromHash);
+
+    const IntersectionObserverConstructor =
+      window.IntersectionObserver ??
+      (typeof globalThis !== 'undefined'
+        ? globalThis.IntersectionObserver
+        : undefined);
+
+    if (typeof IntersectionObserverConstructor !== 'function') {
+      return () => window.removeEventListener('hashchange', updateFromHash);
+    }
+
+    const sectionsToObserve = targetIds
+      .map((targetId) => document.getElementById(targetId))
+      .filter(Boolean);
+
+    if (sectionsToObserve.length === 0) {
+      return () => window.removeEventListener('hashchange', updateFromHash);
+    }
+
+    const latestEntries = new Map();
+    const observer = new IntersectionObserverConstructor(
+      (entries) => {
+        entries.forEach((entry) => {
+          const targetId = entry.target?.id;
+
+          if (targetIdSet.has(targetId)) {
+            latestEntries.set(targetId, entry);
+          }
+        });
+
+        const visibleEntries = targetIds
+          .map((targetId) => latestEntries.get(targetId))
+          .filter((entry) => entry?.isIntersecting);
+
+        if (visibleEntries.length === 0) {
+          return;
+        }
+
+        visibleEntries.sort((entryA, entryB) => {
+          const topA = entryA.boundingClientRect?.top ?? Number.POSITIVE_INFINITY;
+          const topB = entryB.boundingClientRect?.top ?? Number.POSITIVE_INFINITY;
+
+          if (topA !== topB) {
+            return topA - topB;
+          }
+
+          return (
+            (entryB.intersectionRatio ?? 0) -
+            (entryA.intersectionRatio ?? 0)
+          );
+        });
+
+        setActiveTargetId(visibleEntries[0].target.id);
+      },
+      { threshold: [0, 0.25, 0.5, 1] },
+    );
+
+    sectionsToObserve.forEach((section) => observer.observe(section));
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('hashchange', updateFromHash);
+    };
+  }, [navigationTargetKey]);
+
+  const handleNavigationClick = (event, targetId) => {
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+
+    setActiveTargetId(targetId);
+  };
 
   return (
     <>
@@ -247,8 +362,17 @@ function SiteShell({
                   {resolvedNavigation.map((item) => (
                     <li key={item.id}>
                       <a
-                        className="site-nav__link"
+                        aria-current={
+                          activeTargetId === item.targetId ? 'location' : undefined
+                        }
+                        className={classNames(
+                          'site-nav__link',
+                          activeTargetId === item.targetId ? 'is-active' : '',
+                        )}
                         href={`#${item.targetId}`}
+                        onClick={(event) =>
+                          handleNavigationClick(event, item.targetId)
+                        }
                       >
                         {item.label}
                       </a>
