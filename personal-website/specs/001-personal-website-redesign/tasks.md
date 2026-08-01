@@ -130,11 +130,11 @@ primary section is reachable, readable, and backed by a useful fallback.
 
 ### Implementation for User Story 3
 
-- [ ] T029 [P] [US3] Add approved Georgia, University of Georgia, Atlanta Braves, and other semi-personal details to `src/content/siteContent.js`
-- [ ] T030 [US3] Implement the personal note, public social links, optional resume link, and no-forced-CTA footer in `src/components/Footer.jsx`
-- [ ] T031 [US3] Implement narrow-screen navigation, menu labeling, focus return, and skip-path behavior in `src/components/MobileNavigation.jsx` and `src/components/SiteShell.jsx`
-- [ ] T032 [US3] Apply reduced-motion behavior, visible focus, readable fallback text, and no-horizontal-overflow rules in `src/index.css` and `src/App.css`
-- [ ] T033 [US3] Record keyboard, responsive, reduced-motion, and missing-media results in `specs/001-personal-website-redesign/qa/p3-browse.md`
+- [x] T029 [P] [US3] Add approved Georgia, University of Georgia, Atlanta Braves, and other semi-personal details to `src/content/siteContent.js`
+- [x] T030 [US3] Implement the personal note, public social links, optional resume link, and no-forced-CTA footer in `src/components/Footer.jsx`
+- [x] T031 [US3] Implement narrow-screen navigation, menu labeling, focus return, and skip-path behavior in `src/components/MobileNavigation.jsx` and `src/components/SiteShell.jsx`
+- [x] T032 [US3] Apply reduced-motion behavior, visible focus, readable fallback text, and no-horizontal-overflow rules in `src/index.css` and `src/App.css`
+- [x] T033 [US3] Record keyboard, responsive, reduced-motion, and missing-media results in `specs/001-personal-website-redesign/qa/p3-browse.md`
 
 **Checkpoint**: User Story 3 is independently demonstrable as an accessible,
 human, low-friction browsing experience.

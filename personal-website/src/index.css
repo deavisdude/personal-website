@@ -103,6 +103,8 @@
 
 html {
   min-width: 20rem;
+  overflow-x: hidden;
+  overflow-x: clip;
   background: var(--color-background);
   color: var(--color-text);
   scroll-behavior: smooth;
@@ -114,6 +116,7 @@ body {
   min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
+  overflow-x: clip;
   background: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-family-sans);
@@ -153,6 +156,7 @@ figure {
 
 a {
   color: var(--color-accent-strong);
+  overflow-wrap: anywhere;
   text-decoration-thickness: 0.1em;
   text-underline-offset: 0.2em;
   transition:
@@ -241,6 +245,7 @@ pre {
   z-index: 1000;
   inset-block-start: var(--space-3);
   inset-inline-start: var(--shell-gutter);
+  max-inline-size: calc(100vw - var(--space-8));
   transform: translateY(-200%);
   padding: var(--space-3) var(--space-4);
   border: 0.125rem solid var(--color-focus);
@@ -248,12 +253,15 @@ pre {
   background: var(--color-surface-raised);
   color: var(--color-text);
   font-weight: var(--font-weight-semibold);
+  overflow-wrap: anywhere;
   text-decoration: none;
   transition: transform var(--motion-duration-fast) var(--motion-ease-standard);
 }
 
 .skip-link:focus-visible {
   transform: translateY(0);
+  outline: 0.1875rem solid var(--color-focus);
+  outline-offset: 0.25rem;
 }
 
 .sr-only,
@@ -274,17 +282,28 @@ pre {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-fast: 0ms;
+    --motion-duration-standard: 0ms;
+    --motion-duration-slow: 0ms;
+  }
+
   html {
-    scroll-behavior: auto;
+    scroll-behavior: auto !important;
   }
 
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+    animation: none !important;
     scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 30rem) {
+  :root {
+    --shell-gutter: var(--space-4);
   }
 }
 

@@ -1,9 +1,11 @@
 import React from 'react';
+import MobileNavigation from './MobileNavigation';
 
 const DEFAULT_IDS = {
   shell: 'site-shell',
   header: 'site-header',
   navigation: 'primary-navigation',
+  mobileNavigation: 'mobile-navigation',
   main: 'main-content',
   footer: 'site-footer',
 };
@@ -11,6 +13,7 @@ const DEFAULT_IDS = {
 const DEFAULT_LABELS = {
   skipLink: 'Skip to main content',
   navigation: 'Primary navigation',
+  mobileNavigation: 'Mobile navigation',
   main: 'Main content',
   rail: 'Supporting content',
   footer: 'Site footer',
@@ -63,6 +66,12 @@ function asLabel(value) {
 
   const label = value.trim();
   return label || null;
+}
+
+function distinctLabel(value, fallback, disallowedLabel) {
+  const label = asLabel(value) ?? fallback;
+
+  return label === disallowedLabel ? `${fallback} menu` : label;
 }
 
 function classNames(...names) {
@@ -180,6 +189,7 @@ function hashTargetId(targetIds) {
  * @param {React.ReactNode} [props.footerContent] Optional footer content.
  * @param {string} [props.skipLinkLabel] Accessible skip-link text.
  * @param {string} [props.navigationLabel] Accessible name for primary nav.
+ * @param {string} [props.mobileNavigationLabel] Accessible name for mobile nav.
  * @param {string} [props.mainLabel] Accessible name for the main landmark.
  * @param {string} [props.railLabel] Accessible name for the optional rail.
  * @param {string} [props.footerLabel] Accessible name for the footer landmark.
@@ -187,6 +197,7 @@ function hashTargetId(targetIds) {
  * @param {string} [props.shellId] ID for the shell root.
  * @param {string} [props.headerId] ID for the header landmark.
  * @param {string} [props.navigationId] ID for the navigation landmark.
+ * @param {string} [props.mobileNavigationId] ID for the mobile navigation.
  * @param {string} [props.mainId] ID for the main landmark and skip target.
  * @param {string} [props.footerId] ID for the footer landmark.
  */
@@ -199,6 +210,7 @@ function SiteShell({
   footerContent = null,
   skipLinkLabel = DEFAULT_LABELS.skipLink,
   navigationLabel = DEFAULT_LABELS.navigation,
+  mobileNavigationLabel = DEFAULT_LABELS.mobileNavigation,
   mainLabel = DEFAULT_LABELS.main,
   railLabel = DEFAULT_LABELS.rail,
   footerLabel = DEFAULT_LABELS.footer,
@@ -206,11 +218,17 @@ function SiteShell({
   shellId = DEFAULT_IDS.shell,
   headerId = DEFAULT_IDS.header,
   navigationId = DEFAULT_IDS.navigation,
+  mobileNavigationId = DEFAULT_IDS.mobileNavigation,
   mainId = DEFAULT_IDS.main,
   footerId = DEFAULT_IDS.footer,
 }) {
   const resolvedSkipLinkLabel = asLabel(skipLinkLabel) ?? DEFAULT_LABELS.skipLink;
   const resolvedNavigationLabel = asLabel(navigationLabel) ?? DEFAULT_LABELS.navigation;
+  const resolvedMobileNavigationLabel = distinctLabel(
+    mobileNavigationLabel,
+    DEFAULT_LABELS.mobileNavigation,
+    resolvedNavigationLabel,
+  );
   const resolvedMainLabel = asLabel(mainLabel) ?? DEFAULT_LABELS.main;
   const resolvedRailLabel = asLabel(railLabel) ?? DEFAULT_LABELS.rail;
   const resolvedFooterLabel = asLabel(footerLabel) ?? DEFAULT_LABELS.footer;
@@ -220,6 +238,11 @@ function SiteShell({
   const resolvedNavigationId = reserveId(
     navigationId,
     DEFAULT_IDS.navigation,
+    usedIds,
+  );
+  const resolvedMobileNavigationId = reserveId(
+    mobileNavigationId,
+    DEFAULT_IDS.mobileNavigation,
     usedIds,
   );
   const resolvedMainId = reserveId(mainId, DEFAULT_IDS.main, usedIds);
@@ -381,6 +404,14 @@ function SiteShell({
                 </ul>
               ) : null}
             </nav>
+
+            <MobileNavigation
+              activeTargetId={activeTargetId}
+              navigation={resolvedNavigation}
+              navigationId={resolvedMobileNavigationId}
+              navigationLabel={resolvedMobileNavigationLabel}
+              onNavigate={handleNavigationClick}
+            />
           </div>
         </header>
 

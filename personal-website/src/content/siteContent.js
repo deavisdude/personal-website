@@ -52,7 +52,17 @@ export const profile = {
   locationLabel: "Georgia, USA",
   careerContext:
     "Current software-engineering and developer-tools context at The Home Depot.",
-  interests: [],
+  interests: [
+    { label: "Place", text: "Georgia" },
+    { label: "University", text: "University of Georgia" },
+    { label: "Sports context", text: "Atlanta Braves" },
+    {
+      label: "Builder / creative work",
+      text: "Tools, games, simulations, and creative experiments",
+    },
+  ],
+  personalNote:
+    "I enjoy building useful tools and playful creative experiments.",
   socialLinks: [linkedInProfileLink],
   resumeLink: null,
 };

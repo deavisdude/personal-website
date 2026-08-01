@@ -8,6 +8,7 @@ import ExperienceSection, {
   AboutSection,
 } from "./components/ExperienceSection";
 import ProjectArchive from "./components/ProjectArchive";
+import Footer from "./components/Footer";
 import siteContent from "./content/siteContent";
 
 const PRIMARY_NAVIGATION = [
@@ -61,6 +62,7 @@ function App() {
           navigation={PRIMARY_NAVIGATION}
           rail={<IdentityRail profile={profile} />}
           sections={sections}
+          footerContent={<Footer profile={profile} />}
         />
       </div>
       <AnalyticsBootstrap />
