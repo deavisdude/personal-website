@@ -41,6 +41,10 @@ test('renders the P1 identity and current-first experience flow', () => {
   expect(
     screen.getByRole('heading', { name: 'Experience' }),
   ).toBeInTheDocument();
+  expect(
+    screen.getByRole('heading', { name: 'Work', level: 2 }),
+  ).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'Support' })).toBeInTheDocument();
 });
 
 test('provides anchored navigation and updates the active section', () => {
@@ -53,9 +57,11 @@ test('provides anchored navigation and updates the active section', () => {
   const experienceLink = within(navigation).getByRole('link', {
     name: 'Experience',
   });
+  const workLink = within(navigation).getByRole('link', { name: 'Work' });
 
   expect(aboutLink).toHaveAttribute('href', '#about');
   expect(experienceLink).toHaveAttribute('href', '#experience');
+  expect(workLink).toHaveAttribute('href', '#work');
   expect(aboutLink).toHaveAttribute('aria-current', 'location');
   expect(experienceLink).not.toHaveAttribute('aria-current');
 

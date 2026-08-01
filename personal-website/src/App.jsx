@@ -7,11 +7,13 @@ import IdentityRail from "./components/IdentityRail";
 import ExperienceSection, {
   AboutSection,
 } from "./components/ExperienceSection";
+import ProjectArchive from "./components/ProjectArchive";
 import siteContent from "./content/siteContent";
 
-const P1_NAVIGATION = [
+const PRIMARY_NAVIGATION = [
   { sectionId: "about", label: "About" },
   { sectionId: "experience", label: "Experience" },
+  { sectionId: "work", label: "Work" },
 ];
 
 function AnalyticsBootstrap() {
@@ -26,6 +28,7 @@ function App() {
   const content = siteContent ?? {};
   const profile = content.profile ?? {};
   const experience = Array.isArray(content.experience) ? content.experience : [];
+  const projects = Array.isArray(content.projects) ? content.projects : [];
 
   const sections = [
     {
@@ -42,6 +45,12 @@ function App() {
         <ExperienceSection experience={experience} />
       ),
     },
+    {
+      id: "work",
+      label: "Work",
+      heading: "Work",
+      content: <ProjectArchive projects={projects} />,
+    },
   ];
 
   return (
@@ -49,7 +58,7 @@ function App() {
       <div className="App">
         <SiteShell
           brand={profile.name || "Davis Odom"}
-          navigation={P1_NAVIGATION}
+          navigation={PRIMARY_NAVIGATION}
           rail={<IdentityRail profile={profile} />}
           sections={sections}
         />

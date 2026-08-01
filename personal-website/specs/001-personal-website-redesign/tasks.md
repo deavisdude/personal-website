@@ -104,15 +104,15 @@ and no unverified project offers browser play or exposes private source.
 
 ### Implementation for User Story 2
 
-- [ ] T020 [P] [US2] Add approved Support and Flux project records, event/date evidence, award or historical context, and destination sources in `src/content/siteContent.js`
-- [ ] T021 [P] [US2] Add approved Battle of the Masses and UPBETOD project records, date evidence, attribution, and repository/historical destinations in `src/content/siteContent.js`
-- [ ] T022 [P] [US2] Add the BBQ App project record with approved dates, role, Atlanta BBQ Club relationship, and contract-safe wording in `src/content/siteContent.js`
-- [ ] T023 [P] [US2] Add Restaurant Tracker and Football Idle Game WIP records with approved high-level copy, media references, and private-source exclusions in `src/content/siteContent.js`
-- [ ] T024 [US2] Implement project cards with category, date, role, status, attribution, technology, and fallback presentation in `src/components/ProjectCard.jsx`
-- [ ] T025 [US2] Implement selected-work and archive grouping without implying that archived or abandoned projects are current production work in `src/components/ProjectArchive.jsx`
-- [ ] T026 [US2] Implement typed repository, download, official, historical, and browser-verified link rendering with no play control by default in `src/content/projectLinks.js` and `src/components/ProjectCard.jsx`
-- [ ] T027 [US2] Add optional screenshot rendering, missing-media fallbacks, and public/private asset guards in `src/components/ProjectCard.jsx` and `src/assets/projects/`
-- [ ] T028 [US2] Record the P2 work/archive result for all requested projects in `specs/001-personal-website-redesign/qa/p2-work-archive.md`
+- [x] T020 [P] [US2] Add approved Support and Flux project records, event/date evidence, award or historical context, and destination sources in `src/content/siteContent.js`
+- [x] T021 [P] [US2] Add approved Battle of the Masses and UPBETOD project records, date evidence, attribution, and repository/historical destinations in `src/content/siteContent.js`
+- [x] T022 [P] [US2] Add the BBQ App project record with approved dates, role, Atlanta BBQ Club relationship, and contract-safe wording in `src/content/siteContent.js`
+- [x] T023 [P] [US2] Add Restaurant Tracker and Football Idle Game WIP records with approved high-level copy, media references, and private-source exclusions in `src/content/siteContent.js`
+- [x] T024 [US2] Implement project cards with category, date, role, status, attribution, technology, and fallback presentation in `src/components/ProjectCard.jsx`
+- [x] T025 [US2] Implement selected-work and archive grouping without implying that archived or abandoned projects are current production work in `src/components/ProjectArchive.jsx`
+- [x] T026 [US2] Implement typed repository, download, official, historical, and browser-verified link rendering with no play control by default in `src/content/projectLinks.js` and `src/components/ProjectCard.jsx`
+- [x] T027 [US2] Add optional screenshot rendering, missing-media fallbacks, and public/private asset guards in `src/components/ProjectCard.jsx` and `src/assets/projects/`
+- [x] T028 [US2] Record the P2 work/archive result for all requested projects in `specs/001-personal-website-redesign/qa/p2-work-archive.md`
 
 **Checkpoint**: User Story 2 is independently demonstrable with text-first
 project evidence and honest availability labels.
