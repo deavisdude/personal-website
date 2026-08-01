@@ -2,7 +2,8 @@
 
 **Feature**: [Davis Odom Personal Website Redesign](./spec.md)
 **Updated**: 2026-08-01
-**Status**: Direction approved; exact framework and token values remain open
+**Status**: Direction and implementation stack approved; visual token values and
+content approvals remain open
 
 ## Approved technical direction
 
@@ -16,8 +17,28 @@
   experience for current iPhone and Android browsers.
 - Keep content static or content-driven unless a later requirement justifies
   persistence or a service.
-- Include lightweight analytics with privacy-conscious configuration; exact
-  provider selection remains open.
+- Include lightweight analytics with privacy-conscious configuration; the Phase
+  1 implementation selects `@vercel/analytics`, with final event and privacy
+  settings still subject to release review.
+
+## Phase 1 implementation selection
+
+- **Framework and language**: Vite 6 with React 19, configured as a
+  TypeScript-ready client-rendered application. Existing JavaScript files may
+  be migrated incrementally as the redesign replaces the disposable CRA shell.
+- **Styling system**: Plain CSS with shared custom properties in the planned
+  `src/index.css` and `src/App.css`; no additional styling framework is needed
+  for the single-page content-driven site.
+- **Analytics**: `@vercel/analytics`, enabled only through an explicit later
+  presentation integration and subject to the release privacy review. No
+  secret, project ID, or visitor-owned data service is committed here.
+- **Deployment**: Vercel's static Vite build, emitted to `dist/`, with the
+  repository workflow running `npm ci`, `npm test`, and `npm run build`.
+- **CI runtime**: GitHub Actions on Node.js 22.x with the committed npm lockfile
+  as the cache and installation source.
+- **Entry point**: Vite's root `index.html` is the document entry. Its metadata
+  remains intentionally minimal until the Phase 2 document-settings task
+  approves the final title, description, social metadata, and favicon policy.
 
 ## Approved visual direction
 
@@ -41,11 +62,10 @@
 
 ## Decisions still open
 
-- Exact framework and language choice, with modern TypeScript-capable options
-  under consideration.
+- Final TypeScript migration timing and component-level implementation details.
 - Exact typography, red/neutral color values, spacing scale, breakpoints, and
   motion tokens after visual exploration.
-- Exact analytics provider, event scope, retention, and privacy configuration.
+- Analytics event scope, retention, and final privacy configuration.
 - Final browser support matrix and production preview checks.
 
 ## Content defaults

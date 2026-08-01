@@ -36,8 +36,9 @@ must be updated before implementation consumes any open item.
   influence as atmosphere rather than copying team marks or proprietary assets.
 - Asset direction: text-first launch is acceptable; missing photos/screenshots
   are non-blocking and must be flagged during development for later handoff.
-- Analytics direction: lightweight analytics are desired; the provider and
-  exact privacy configuration remain a small implementation decision.
+- Analytics direction: lightweight analytics are desired; Phase 1 selects
+  `@vercel/analytics`, while event scope and exact privacy configuration remain
+  a release-review decision.
 
 ## Open approvals before implementation
 
@@ -50,7 +51,44 @@ must be updated before implementation consumes any open item.
 | Support / Flux / Battle / UPBETOD roles | BLOCKED | Solo/team role, collaborator/organizer attribution, and source mapping |
 | Historical and official links | BLOCKED | Final keep/remove decision after current link checks |
 | Resume | APPROVED / INTERIM | Current LinkedIn-export PDF may be published; replace with polished resume later |
-| Technical and visual brief | PARTIAL | Vercel, GitHub Actions, device direction, dark/red direction, assets, and analytics are decided; exact framework/tokens remain |
+| Technical and visual brief | PARTIAL | Vite/React, Vercel, GitHub Actions, device direction, dark/red direction, assets, and the analytics package are selected; visual tokens and final analytics/privacy settings remain |
+
+## T003: BBQ App evidence and pending approval
+
+- **Known date evidence**: A public profile record places the BBQ App in June
+  2014-April 2015. This is profile/work-range evidence, not a claim about an
+  app launch date or continuous maintenance.
+- **Atlanta BBQ Club relationship**: The profile context describes a
+  relationship with Atlanta BBQ Club. No public app source is assumed.
+- **Davis's role**: `BLOCKED/PENDING DAVIS APPROVAL` — confirm the exact role,
+  contribution, and ownership wording that may be published.
+- **Contract-safe wording**: `BLOCKED/PENDING DAVIS APPROVAL` — confirm the
+  exact public description, whether Atlanta BBQ Club may be named, and any
+  contract boundary that must be preserved. Do not infer an employer, client,
+  business, legal, or contact detail.
+- **Proposed wording (not approved or published)**: “BBQ App — Public profile
+  record, June 2014-April 2015. The profile also describes an Atlanta BBQ Club
+  relationship. Davis's role and the final contract-safe public wording are
+  pending his approval.”
+
+## T004: Archive project provenance and attribution
+
+The date sources below retain their type. Repository activity is public code
+history only; it is not silently converted into an event date, maintenance
+interval, or playability claim.
+
+| Project | Event/profile/repository date sources | Davis role and collaborators | Attribution decision and publication treatment |
+| --- | --- | --- | --- |
+| Support | Event: GGDA announcement in June 2014. Repository: public build commits in July 2014 and README update 2016-05-13. | `BLOCKED/PENDING DAVIS APPROVAL` — exact Davis role, solo/team status, and collaborator names are not established in the current record. | `BLOCKED/PENDING DAVIS APPROVAL` — confirm credits and organizer attribution before publication. Planning treatment remains archive/download-only unless a modern browser build is independently verified; no play claim. |
+| Flux | Event/project context: described as a 2013 HHS/CDC game-jam project. Profile: older record dated 2014. Repository: no repository date is established in the current record. | `BLOCKED/PENDING DAVIS APPROVAL` — confirm Davis's role and whether HHS/CDC describes an organizer, collaborator, or other relationship; do not infer named teammates. | `BLOCKED/PENDING DAVIS APPROVAL` — confirm collaborator and organizer credits. Planning treatment remains historical archive context; the old web-build URL is unavailable and is not a live demo. |
+| Battle of the Masses | Event reference: Global Game Jam reference dated 2016. Profile: public record January-March 2016. Repository: no repository date is established in the current record. | `BLOCKED/PENDING DAVIS APPROVAL` — exact Davis role, ownership level, and collaborators are not established. | `BLOCKED/PENDING DAVIS APPROVAL` — confirm team and event attribution; do not imply solo authorship. Planning treatment remains historical-link/archive pending final link check; no play claim. |
+| UPBETOD | Event/profile: no event or profile date is established in the current record. Repository: public activity in June 2015 and README update 2016-05-13. | `BLOCKED/PENDING DAVIS APPROVAL` — exact Davis role, ownership level, and collaborators are not established. | `BLOCKED/PENDING DAVIS APPROVAL` — confirm repository provenance and any collaborator credits. Planning treatment remains repository/archive only; repository activity does not establish an event date or playability. |
+
+**Exact missing T004 approval**: For each project, Davis must confirm his role
+and level of ownership, the names and roles of collaborators, whether each
+named organization is an organizer or collaborator, and the final attribution
+text. Until those confirmations are supplied, proposed role or attribution
+wording is non-published pending text only.
 
 ## Draft role and thesis candidates
 

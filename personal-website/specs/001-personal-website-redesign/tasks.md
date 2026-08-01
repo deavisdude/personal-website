@@ -41,11 +41,11 @@ work begins.
 
 - [x] T001 [P] Record the approved public role label, opening thesis, profile wording, and public social/resume decisions in `specs/001-personal-website-redesign/content-approval.md`
 - [x] T002 [P] Record the text-first asset policy and optional future screenshot handoff for Restaurant Tracker and Football Idle Game in `specs/001-personal-website-redesign/content-approval.md`
-- [ ] T003 [P] Record the BBQ App dates, role, Atlanta BBQ Club relationship, and contract-safe public wording in `specs/001-personal-website-redesign/content-approval.md`
-- [ ] T004 [P] Record Davis's role, collaborators, event/profile/repository date sources, and attribution decisions for Support, Flux, Battle of the Masses, and UPBETOD in `specs/001-personal-website-redesign/content-approval.md`
+- [x] T003 [P] Record the BBQ App dates, role, Atlanta BBQ Club relationship, and contract-safe public wording in `specs/001-personal-website-redesign/content-approval.md`
+- [x] T004 [P] Record Davis's role, collaborators, event/profile/repository date sources, and attribution decisions for Support, Flux, Battle of the Masses, and UPBETOD in `specs/001-personal-website-redesign/content-approval.md`
 - [x] T005 [P] Record the approved modern-stack migration, Vercel deployment, GitHub Actions workflow, broad desktop/mobile target, dark/Atlanta-red direction, text-first asset policy, and lightweight-analytics direction in `specs/001-personal-website-redesign/brief.md`
-- [ ] T006 Select and initialize the modern web framework, styling system, analytics provider, and deployment integration in `package.json`, `package-lock.json`, `.github/workflows/ci.yml`, and `vercel.json` after the visual interaction model is approved
-- [ ] T007 Create the planned content, component, and project-media directories in `src/content/`, `src/components/`, and `src/assets/projects/` (or the selected framework equivalents recorded in `brief.md`) (depends on T006)
+- [x] T006 Select and initialize the modern web framework, styling system, analytics provider, and deployment integration in `package.json`, `package-lock.json`, `.github/workflows/ci.yml`, and `vercel.json` after the visual interaction model is approved
+- [x] T007 Create the planned content, component, and project-media directories in `src/content/`, `src/components/`, and `src/assets/projects/` (or the selected framework equivalents recorded in `brief.md`) (depends on T006)
 
 ---
 
@@ -60,8 +60,8 @@ the exact framework, styling system, and visual tokens are approved.
 - [ ] T008 Create the approved Profile, Experience Item, Project Entry, Link Evidence, and Media Asset records in `src/content/siteContent.js` according to `specs/001-personal-website-redesign/data-model.md`
 - [ ] T009 Create typed destination, status, verification-date, attribution, and fallback helpers in `src/content/projectLinks.js` according to `specs/001-personal-website-redesign/contracts/content-entry.md`
 - [ ] T010 Establish approved typography, color, spacing, breakpoint, focus, and reduced-motion tokens in `src/index.css` and `src/App.css`
-- [ ] T011 Create semantic page landmarks, skip path, content sections, and responsive shell boundaries in `src/components/SiteShell.js`
-- [ ] T012 Configure approved title, description, social metadata, favicon, and public document settings in `public/index.html`
+- [ ] T011 Create semantic page landmarks, skip path, content sections, and responsive shell boundaries in `src/components/SiteShell.jsx`
+- [ ] T012 Configure approved title, description, social metadata, favicon, and public document settings in `index.html`
 - [ ] T013 Create the link, playability, accessibility, privacy, visual, and final-review evidence files in `specs/001-personal-website-redesign/qa/` and `specs/001-personal-website-redesign/link-audit.md`
 
 **Checkpoint**: Shared content and accessibility foundations are ready; each
@@ -82,10 +82,10 @@ navigation destination without using a resume or contact funnel.
 ### Implementation for User Story 1
 
 - [ ] T014 [P] [US1] Populate the approved profile, career context, and current-first experience data in `src/content/siteContent.js`
-- [ ] T015 [US1] Implement the desktop identity rail, opening thesis, Georgia/location phrasing, and public social links in `src/components/IdentityRail.js`
-- [ ] T016 [US1] Implement the About and current-first Experience sections with employer-safe wording in `src/components/ExperienceSection.js`
-- [ ] T017 [US1] Implement anchored section navigation and active-section feedback for desktop and mobile in `src/components/SiteShell.js`
-- [ ] T018 [US1] Compose the P1 page flow and identity-to-experience hierarchy in `src/App.js`
+- [ ] T015 [US1] Implement the desktop identity rail, opening thesis, Georgia/location phrasing, and public social links in `src/components/IdentityRail.jsx`
+- [ ] T016 [US1] Implement the About and current-first Experience sections with employer-safe wording in `src/components/ExperienceSection.jsx`
+- [ ] T017 [US1] Implement anchored section navigation and active-section feedback for desktop and mobile in `src/components/SiteShell.jsx`
+- [ ] T018 [US1] Compose the P1 page flow and identity-to-experience hierarchy in `src/App.jsx`
 - [ ] T019 [US1] Record the P1 identity and current-context result as `PASS`, `BLOCKED`, or `FAIL` in `specs/001-personal-website-redesign/qa/p1-identity.md`
 
 **Checkpoint**: User Story 1 is independently demonstrable as a coherent
@@ -108,10 +108,10 @@ and no unverified project offers browser play or exposes private source.
 - [ ] T021 [P] [US2] Add approved Battle of the Masses and UPBETOD project records, date evidence, attribution, and repository/historical destinations in `src/content/siteContent.js`
 - [ ] T022 [P] [US2] Add the BBQ App project record with approved dates, role, Atlanta BBQ Club relationship, and contract-safe wording in `src/content/siteContent.js`
 - [ ] T023 [P] [US2] Add Restaurant Tracker and Football Idle Game WIP records with approved high-level copy, media references, and private-source exclusions in `src/content/siteContent.js`
-- [ ] T024 [US2] Implement project cards with category, date, role, status, attribution, technology, and fallback presentation in `src/components/ProjectCard.js`
-- [ ] T025 [US2] Implement selected-work and archive grouping without implying that archived or abandoned projects are current production work in `src/components/ProjectArchive.js`
-- [ ] T026 [US2] Implement typed repository, download, official, historical, and browser-verified link rendering with no play control by default in `src/content/projectLinks.js` and `src/components/ProjectCard.js`
-- [ ] T027 [US2] Add optional screenshot rendering, missing-media fallbacks, and public/private asset guards in `src/components/ProjectCard.js` and `src/assets/projects/`
+- [ ] T024 [US2] Implement project cards with category, date, role, status, attribution, technology, and fallback presentation in `src/components/ProjectCard.jsx`
+- [ ] T025 [US2] Implement selected-work and archive grouping without implying that archived or abandoned projects are current production work in `src/components/ProjectArchive.jsx`
+- [ ] T026 [US2] Implement typed repository, download, official, historical, and browser-verified link rendering with no play control by default in `src/content/projectLinks.js` and `src/components/ProjectCard.jsx`
+- [ ] T027 [US2] Add optional screenshot rendering, missing-media fallbacks, and public/private asset guards in `src/components/ProjectCard.jsx` and `src/assets/projects/`
 - [ ] T028 [US2] Record the P2 work/archive result for all requested projects in `specs/001-personal-website-redesign/qa/p2-work-archive.md`
 
 **Checkpoint**: User Story 2 is independently demonstrable with text-first
@@ -131,8 +131,8 @@ primary section is reachable, readable, and backed by a useful fallback.
 ### Implementation for User Story 3
 
 - [ ] T029 [P] [US3] Add approved Georgia, University of Georgia, Atlanta Braves, and other semi-personal details to `src/content/siteContent.js`
-- [ ] T030 [US3] Implement the personal note, public social links, optional resume link, and no-forced-CTA footer in `src/components/Footer.js`
-- [ ] T031 [US3] Implement narrow-screen navigation, menu labeling, focus return, and skip-path behavior in `src/components/MobileNavigation.js` and `src/components/SiteShell.js`
+- [ ] T030 [US3] Implement the personal note, public social links, optional resume link, and no-forced-CTA footer in `src/components/Footer.jsx`
+- [ ] T031 [US3] Implement narrow-screen navigation, menu labeling, focus return, and skip-path behavior in `src/components/MobileNavigation.jsx` and `src/components/SiteShell.jsx`
 - [ ] T032 [US3] Apply reduced-motion behavior, visible focus, readable fallback text, and no-horizontal-overflow rules in `src/index.css` and `src/App.css`
 - [ ] T033 [US3] Record keyboard, responsive, reduced-motion, and missing-media results in `specs/001-personal-website-redesign/qa/p3-browse.md`
 

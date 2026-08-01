@@ -17,18 +17,18 @@ responsive hierarchy.
 
 ## Technical Context
 
-**Language/Version**: Modern TypeScript-capable web stack; exact framework and
-version remain open until the visual interaction model is selected. The existing
-React 16/CRA source will not be preserved.
+**Language/Version**: Vite 6 with React 19 and a TypeScript-ready JavaScript
+entry during incremental migration. The existing React 16/CRA source will not
+be preserved.
 
-**Primary Dependencies**: Modern framework, styling system, and lightweight
-analytics provider to be selected; the current `react-scripts` and Material UI
-dependencies are not constraints.
+**Primary Dependencies**: Vite, React, Vitest, plain CSS custom properties, and
+`@vercel/analytics`; the current `react-scripts` and Material UI dependencies
+are not constraints.
 
 **Storage**: N/A. Profile and project content are public static content records;
 no visitor-submitted or persistent user data is required.
 
-**Testing**: Existing project test runner where useful, plus browser-based
+**Testing**: Vitest for implementation checks where useful, plus browser-based
 responsive, keyboard, reduced-motion, link, provenance, privacy, and production
 smoke validation documented in [quickstart.md](./quickstart.md).
 
@@ -67,9 +67,10 @@ archive entries, and a small explicit content catalog.
 - **V. Low-Maintenance Content System**: PASS. FR-022 and FR-023 keep the scope
   content-driven and exclude an unnecessary blog, funnel, or heavy integration.
 
-**Gate result**: PASS for research and design planning. Implementation remains
-gated on exact framework/token selection and the content approvals tracked in
-`tasks.md`; this is a product-input gate, not a constitution violation.
+**Gate result**: PASS for research and design planning. The Phase 1 framework
+and deployment stack is selected; implementation remains gated on visual token
+approval and the content approvals tracked in `tasks.md`. This is a
+product-input gate, not a constitution violation.
 
 ## Project Structure
 
@@ -82,7 +83,7 @@ specs/001-personal-website-redesign/
 ├── data-model.md           # Phase 1 content entities and invariants
 ├── quickstart.md           # Phase 1 validation/run guide
 ├── content-approval.md     # Phase 0 user-approved copy/provenance record
-├── brief.md                # User-provided technical/visual implementation input
+├── brief.md                # Selected technical/visual implementation input
 ├── contracts/
 │   └── content-entry.md    # Public content and link contract
 ├── checklists/
@@ -94,33 +95,35 @@ specs/001-personal-website-redesign/
 
 ```text
 src/
-├── App.js                  # Page composition and route-independent shell
+├── App.jsx                 # Page composition and route-independent shell
 ├── App.css                 # Page layout and component styling
+├── index.jsx               # Vite/React bootstrap
 ├── index.css               # Global tokens, focus, and motion defaults
 ├── content/
 │   ├── siteContent.js      # Approved profile, experience, and project data
 │   └── projectLinks.js     # Typed link evidence and status helpers
 ├── components/
-│   ├── SiteShell.js        # Landmarks, skip path, and responsive shell
-│   ├── IdentityRail.js     # Opening identity and desktop navigation
-│   ├── MobileNavigation.js # Narrow-screen navigation
-│   ├── ExperienceSection.js
-│   ├── ProjectCard.js
-│   ├── ProjectArchive.js
-│   └── Footer.js
+│   ├── SiteShell.jsx        # Landmarks, skip path, and responsive shell
+│   ├── IdentityRail.jsx     # Opening identity and desktop navigation
+│   ├── MobileNavigation.jsx # Narrow-screen navigation
+│   ├── ExperienceSection.jsx
+│   ├── ProjectCard.jsx
+│   ├── ProjectArchive.jsx
+│   └── Footer.jsx
 └── assets/
     └── projects/           # Optional approved screenshots with alt text
 
+index.html                    # Vite document entry
+
 public/
-└── index.html               # Metadata, title, and public document settings
+└── ...                       # Static assets; document metadata lives in index.html
 ```
 
 **Structure Decision**: Use the existing single React app as the smallest
 coherent implementation surface. Keep approved content in `src/content/`, keep
-layout components separate from project data, and treat `public/` as document
-metadata/static fallback space. The final technical brief may revise this tree
-before T009 begins; any revision must preserve the content contract and
-traceability.
+layout components separate from project data, use the Vite root `index.html`
+for document metadata, and treat `public/` as static fallback assets. Any
+future framework revision must preserve the content contract and traceability.
 
 ## Complexity Tracking
 
