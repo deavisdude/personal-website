@@ -8,9 +8,53 @@
 
 This pass used the local application, the user-provided profile PDF, public
 LinkedIn and GitHub material, the previous public website repository, selected
-repository history, and a rendered/source inspection of the user's preferred
-reference site. Public sources establish provenance and link context; they do
-not authorize publishing every fact found there.
+repository history, a rendered/source inspection of the user's preferred
+reference site, Davis's 2026-08-01 content approvals, and the supplied
+read-only URL-check results. Public sources establish provenance and link
+context; they do not authorize publishing every fact found there.
+
+## Public source and read-only check snapshot
+
+The following findings are recorded as public evidence and candidate
+destinations. They are not a rendered-link audit and do not establish browser
+playability.
+
+- The public [My-Site repository](https://github.com/deavisdude/My-Site) contains
+  the old-site [index source](https://github.com/deavisdude/My-Site/blob/master/index.html),
+  which linked `Support Web.html`, `Flux/Build.html`, the Global Game Jam
+  Battle of the Masses page, an unlinked `Top 100 BBQ` card, and the public
+  [UPBETOD Trello board](https://trello.com/b/TocWvDKP/upbetod). The current
+  redesign must not copy the old site's phone or email.
+- The old-site tree contains [Flux/Build.html](https://github.com/deavisdude/My-Site/blob/master/Flux/Build.html)
+  (4,606 bytes), `Flux/Build.unity3d` (31,937,134 bytes),
+  [Support Web.html](https://github.com/deavisdude/My-Site/blob/master/Support%20Web.html)
+  (4,212 bytes), and `Support Web.unity3d` (42,352,073 bytes). The HTML
+  manifests explicitly use Unity Web Player 3.x. Support says Unity Web Player
+  is no longer supported in Google Chrome.
+- The Flux manifest says it was made at the 2013 HHS Game Jam at Southern
+  Polytechnic State University in Atlanta, was one of five winning submissions,
+  and links the legacy [Dropbox download](https://www.dropbox.com/sh/gzk67bjp474t3cr/AADmDEu5jzIMQZWZSnAh-hY9a?dl=0).
+  The Support manifest describes a non-violent teen mental/emotional-health 2D
+  platformer with puzzle elements made in two days by a team of seven
+  developers.
+- Public source candidates are the [Support repository](https://github.com/deavisdude/Support)
+  (README: Summer Game Jam 2014; quick/buggy), [CDCJam-14 repository](https://github.com/deavisdude/CDCJam-14)
+  (README: CDC & HHS Game Jam Submission, fall 14; quick/buggy but works), and
+  [UPBETOD repository](https://github.com/deavisdude/UPBETOD) (Unity
+  local-multiplayer controller-based space shooter for a game jam; time
+  constraints).
+- The supplied [UPBETOD video](https://www.youtube.com/watch?v=Ssr0FPcskLQ)
+  is titled “(UPBETOD) Über Pwn Battle Extraordinaire-tastrophe of Doom”; the
+  supplied [Battle of the Masses video](https://www.youtube.com/watch?v=indjhyEG1g4)
+  is titled “Battle of the Masses”. Their YouTube oEmbed responses were
+  checked on 2026-08-01 and identify `deavisdude` as author. Both are historical
+  video evidence, not playable builds.
+- Read-only URL checks on 2026-08-01 returned HTTP 200 for the four GitHub
+  old-site artifact pages, the legacy Dropbox URL, the Trello board, and the
+  two YouTube oEmbed endpoints. Dropbox redirected to
+  `https://www.dropbox.com/scl/fo/x84zv0jvunx5z8isl3eqw/ACs1f7kqfhV1RxKAaurL62g?rlkey=3pa5da2hwlq4bgnmrrpmup9zh&dl=0`.
+  These are read-only observations; T034 still must check the exact rendered
+  controls and T035 must test any candidate build.
 
 ## Decision 1: Use one unified personal narrative
 
@@ -164,17 +208,27 @@ branding, and code rather than copy the reference.
 
 | Project | Date evidence | Public evidence | Planning treatment |
 | --- | --- | --- | --- |
-| Support | Public build commits in July 2014; public README update 2016-05-13; GGDA announcement in June 2014 | [Support repository](https://github.com/deavisdude/Support), [GGDA award announcement](https://www.ggda.org/news/support-wins-summer-game-jam-at-spsu), and [itch.io download page](https://skateborden.itch.io/support) | Archive entry; download-only unless a modern browser build is independently verified |
-| Flux | Described as a 2013 HHS/CDC game-jam project; older profile record dated 2014 | [GGDA 2014 review](https://www.ggda.org/news/ggda-2014-in-review); old web-build URL is unavailable | Archive entry with historical context; do not present the dead URL as live |
-| Battle of the Masses | Public profile record January-March 2016 | [Global Game Jam reference](https://globalgamejam.org/2016/games/battle-masses), current health not established | Archive entry; historical-link status until final link check |
-| UPBETOD | Public repository activity in June 2015 and README update 2016-05-13 | [UPBETOD repository](https://github.com/deavisdude/UPBETOD) | Repository/archive entry; no play claim without build evidence |
-| BBQ App | Public profile record June 2014-April 2015 | Atlanta BBQ Club relationship is described in the profile context; no public app source is assumed | Archive/professional entry only after contract-safe wording and attribution approval |
+| Support | Old-site manifest: two-day Southern Polytechnic State University Summer Game Jam project; public build commits in July 2014; public README says Summer Game Jam 2014 and describes the project as quick/buggy; GGDA announcement in June 2014 | Davis approved role: SE. The old manifest says a team of seven developers. [Support repository](https://github.com/deavisdude/Support), old-site [manifest](https://github.com/deavisdude/My-Site/blob/master/Support%20Web.html), [legacy Unity artifact](https://github.com/deavisdude/My-Site/blob/master/Support%20Web.unity3d), [GGDA announcement](https://www.ggda.org/news/support-wins-summer-game-jam-at-spsu), and [itch.io download page](https://skateborden.itch.io/support) | Archive entry; repository/download/history only unless a modern browser build is independently verified. Collaborator names and final attribution wording remain open. |
+| Flux | Old-site manifest: 2013 HHS Game Jam at Southern Polytechnic State University in Atlanta; one of five winning submissions; older profile record dated 2014 | Davis approved role: SE. [CDCJam-14 repository](https://github.com/deavisdude/CDCJam-14) is a public source candidate for the CDC/HHS game-jam lineage; old-site [manifest](https://github.com/deavisdude/My-Site/blob/master/Flux/Build.html), [legacy Unity artifact](https://github.com/deavisdude/My-Site/blob/master/Flux/Build.unity3d), [legacy Dropbox destination](https://www.dropbox.com/sh/gzk67bjp474t3cr/AADmDEu5jzIMQZWZSnAh-hY9a?dl=0), and [GGDA 2014 review](https://www.ggda.org/news/ggda-2014-in-review) | Archive entry with historical/download context; the legacy Unity artifact is not a current browser build. Collaborator and organizer attribution remains open. |
+| Battle of the Masses | Public profile record January-March 2016; old-site index links the Global Game Jam page; supplied historical video is dated only by the source record | Davis approved role: Design and Lead Programmer. [Global Game Jam reference](https://globalgamejam.org/2016/games/battle-masses) and [historical video](https://www.youtube.com/watch?v=indjhyEG1g4) | Archive entry; historical reference/video only until final rendered-link and attribution review. No play claim. |
+| UPBETOD | Public repository activity in June 2015 and README update 2016-05-13; README describes a Unity local-multiplayer controller-based space shooter for a game jam under time constraints; public Trello and supplied historical video | Davis approved role: SE. [UPBETOD repository](https://github.com/deavisdude/UPBETOD), [Trello board](https://trello.com/b/TocWvDKP/upbetod), and [historical video](https://www.youtube.com/watch?v=Ssr0FPcskLQ) | Repository/Trello/video archive entry; no play claim without a current build and start-to-finish evidence. Collaborator and event attribution remain open. |
+| BBQ App | Public profile record June 2014-April 2015; old-site index contains an unlinked Top 100 BBQ card | Davis approved role: sole creator. Approved context: TAG student internship partnership with Atlanta BBQ Club, initiated after Davis attended an event at Atlanta Tech Village while interning at the TAG Atlanta office; the club hired him through TAG to build the app. No public app source is assumed. | Archive/professional entry may use the approved contract-safe wording. The date remains work-range evidence, and no current app or play claim is established. |
 | Restaurant Tracker | Current unpublished work | No source URL approved; user may provide screenshot and high-level description | WIP entry; private source and changing details excluded |
 | Football Idle Game | Current unpublished work | No source URL approved; user may provide screenshot and high-level description | WIP entry; private source and changing details excluded |
 
 Repository activity dates are evidence of public code history, not a claim that a
 project was actively maintained throughout the interval. Forks and repositories
 without a confirmed personal narrative are excluded by default.
+
+## Legacy artifact and rebuild boundary
+
+The old Unity Web Player pages and `.unity3d` files are historical/download
+evidence only. The manifests are tied to Unity Web Player 3.x, and the Support
+manifest explicitly notes that the player is no longer supported in Google
+Chrome. Unity rebuild feasibility is an investigation item if no playable
+artifact exists in the public repositories; no rebuild has been started,
+validated, or approved for publication in this pass. No browser playability is
+established for any archive project.
 
 ## Resolved planning unknowns
 
@@ -185,13 +239,20 @@ without a confirmed personal narrative are excluded by default.
   current baseline, while the next technical brief may amend the proposed source
   structure before implementation.
 - **Playable builds**: no build is treated as browser-verified in this pass;
-  link and gameplay checks remain release tasks.
-- **BBQ App wording**: the exact public contract-safe wording remains a user
-  approval task, so the plan forbids guessing.
+  read-only HTTP success, a repository, a download, a legacy artifact, or a
+  historical video is not gameplay evidence. Link and gameplay checks remain
+  release tasks.
+- **BBQ App wording**: Davis approved sole creation, the TAG internship
+  partnership, Atlanta BBQ Club relationship, Atlanta Tech Village origin, and
+  the contract-safe wording recorded in `content-approval.md`.
+- **Archive roles**: Davis approved SE for Support and Flux, Design and Lead
+  Programmer for Battle of the Masses, and SE for UPBETOD. Collaborator names
+  and unresolved organizer/attribution wording remain explicit follow-up items.
 
 ## Research conclusion
 
 The redesign can proceed to content-model and validation planning without
-inventing achievements, private employer details, or live game availability.
-Implementation is intentionally gated on Davis's technical/visual brief and the
-remaining content approvals listed in [tasks.md](./tasks.md).
+inventing achievements, private employer details, collaborator names, or live
+game availability. Implementation is intentionally gated on Davis's
+technical/visual brief, remaining attribution decisions, the rendered-link
+audit, and playability/release validation listed in [tasks.md](./tasks.md).

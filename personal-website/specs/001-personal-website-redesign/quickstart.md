@@ -27,7 +27,7 @@ Open the local URL printed by the development server. For a production-like
 check, run:
 
 ```bash
-npm test -- --watchAll=false
+npm test
 npm run build
 ```
 

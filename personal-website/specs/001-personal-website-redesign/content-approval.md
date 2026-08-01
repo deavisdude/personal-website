@@ -2,7 +2,8 @@
 
 **Feature**: [spec.md](./spec.md)
 **Last reviewed**: 2026-08-01
-**Status**: Planning baseline; implementation direction mostly approved
+**Status**: Content facts and historical-source inventory updated from Davis's
+2026-08-01 approval; rendered-link, playability, and release checks remain open
 
 This record separates what is currently approved by the user from what must be
 confirmed before publication. It is the source of truth for content tasks and
@@ -39,6 +40,11 @@ must be updated before implementation consumes any open item.
 - Analytics direction: lightweight analytics are desired; Phase 1 selects
   `@vercel/analytics`, while event scope and exact privacy configuration remain
   a release-review decision.
+- Historical-source direction: the public old-site repository and artifacts,
+  public source repositories, supplied YouTube videos, the legacy Dropbox
+  destination, and the UPBETOD Trello board may be cataloged as historical or
+  source evidence. They must not be presented as current playable builds
+  without separate rendered, start-to-finish browser evidence.
 
 ## Open approvals before implementation
 
@@ -47,29 +53,36 @@ must be updated before implementation consumes any open item.
 | Role label and opening thesis | APPROVED / ITERATIVE | Use `Senior Software Engineer`; the thesis below is the approved launch draft and may be refined |
 | Restaurant Tracker | NON-BLOCKING | Screenshot/description may be supplied later; use text-first placeholder treatment |
 | Football Idle Game | NON-BLOCKING | Screenshot/description may be supplied later; use text-first placeholder treatment |
-| BBQ App | BLOCKED | Public-safe dates, role, Atlanta BBQ Club relationship, and contract wording |
-| Support / Flux / Battle / UPBETOD roles | BLOCKED | Solo/team role, collaborator/organizer attribution, and source mapping |
-| Historical and official links | BLOCKED | Final keep/remove decision after current link checks |
+| BBQ App | APPROVED | Davis is the sole creator; TAG internship partnership and Atlanta BBQ Club origin are approved for public-safe wording |
+| Support / Flux / Battle / UPBETOD roles | PARTIAL / ROLE APPROVED | Davis's roles are approved; collaborator names and final organizer/attribution wording remain unresolved where not supplied |
+| Historical and official links | PARTIAL / CANDIDATES RECORDED | Supplied source candidates and read-only checks are recorded; final rendered-link audit and keep/remove decisions remain open |
 | Resume | APPROVED / INTERIM | Current LinkedIn-export PDF may be published; replace with polished resume later |
 | Technical and visual brief | PARTIAL | Vite/React, Vercel, GitHub Actions, device direction, dark/red direction, assets, and the analytics package are selected; visual tokens and final analytics/privacy settings remain |
 
-## T003: BBQ App evidence and pending approval
+## T003: BBQ App evidence and approved wording
 
 - **Known date evidence**: A public profile record places the BBQ App in June
   2014-April 2015. This is profile/work-range evidence, not a claim about an
   app launch date or continuous maintenance.
-- **Atlanta BBQ Club relationship**: The profile context describes a
-  relationship with Atlanta BBQ Club. No public app source is assumed.
-- **Davis's role**: `BLOCKED/PENDING DAVIS APPROVAL` — confirm the exact role,
-  contribution, and ownership wording that may be published.
-- **Contract-safe wording**: `BLOCKED/PENDING DAVIS APPROVAL` — confirm the
-  exact public description, whether Atlanta BBQ Club may be named, and any
-  contract boundary that must be preserved. Do not infer an employer, client,
-  business, legal, or contact detail.
-- **Proposed wording (not approved or published)**: “BBQ App — Public profile
-  record, June 2014-April 2015. The profile also describes an Atlanta BBQ Club
-  relationship. Davis's role and the final contract-safe public wording are
-  pending his approval.”
+- **Atlanta BBQ Club relationship**: This was a TAG student internship
+  partnership. While interning at the TAG Atlanta office, Davis attended an
+  event at Atlanta Tech Village; the Atlanta BBQ Club hired him on the spot
+  through the TAG program to build the app.
+- **Davis's role and ownership**: `APPROVED` — Davis was the sole creator.
+- **Contract-safe wording**: `APPROVED` — the relationship and origin above
+  may be named at this level. Do not add private contact information,
+  unapproved dates, employer details, legal terms, or claims about ongoing
+  maintenance.
+- **Approved wording**: “BBQ App — Sole-created app built through a TAG
+  student internship partnership with the Atlanta BBQ Club. While interning at
+  the TAG Atlanta office, Davis attended an event at Atlanta Tech Village; the
+  club hired him through the TAG program to build the app.”
+- **Date boundary**: The public profile record's June 2014-April 2015 range
+  remains work-range evidence, not a claim about the app's launch date or
+  continuous maintenance.
+- **Source boundary**: The old-site index contains an unlinked `Top 100 BBQ`
+  card, but no public app source is assumed. Do not copy the old site's phone
+  number or email address into the current site.
 
 ## T004: Archive project provenance and attribution
 
@@ -77,18 +90,39 @@ The date sources below retain their type. Repository activity is public code
 history only; it is not silently converted into an event date, maintenance
 interval, or playability claim.
 
-| Project | Event/profile/repository date sources | Davis role and collaborators | Attribution decision and publication treatment |
+| Project | Event/profile/repository date sources | Davis role and known team context | Attribution decision and publication treatment |
 | --- | --- | --- | --- |
-| Support | Event: GGDA announcement in June 2014. Repository: public build commits in July 2014 and README update 2016-05-13. | `BLOCKED/PENDING DAVIS APPROVAL` — exact Davis role, solo/team status, and collaborator names are not established in the current record. | `BLOCKED/PENDING DAVIS APPROVAL` — confirm credits and organizer attribution before publication. Planning treatment remains archive/download-only unless a modern browser build is independently verified; no play claim. |
-| Flux | Event/project context: described as a 2013 HHS/CDC game-jam project. Profile: older record dated 2014. Repository: no repository date is established in the current record. | `BLOCKED/PENDING DAVIS APPROVAL` — confirm Davis's role and whether HHS/CDC describes an organizer, collaborator, or other relationship; do not infer named teammates. | `BLOCKED/PENDING DAVIS APPROVAL` — confirm collaborator and organizer credits. Planning treatment remains historical archive context; the old web-build URL is unavailable and is not a live demo. |
-| Battle of the Masses | Event reference: Global Game Jam reference dated 2016. Profile: public record January-March 2016. Repository: no repository date is established in the current record. | `BLOCKED/PENDING DAVIS APPROVAL` — exact Davis role, ownership level, and collaborators are not established. | `BLOCKED/PENDING DAVIS APPROVAL` — confirm team and event attribution; do not imply solo authorship. Planning treatment remains historical-link/archive pending final link check; no play claim. |
-| UPBETOD | Event/profile: no event or profile date is established in the current record. Repository: public activity in June 2015 and README update 2016-05-13. | `BLOCKED/PENDING DAVIS APPROVAL` — exact Davis role, ownership level, and collaborators are not established. | `BLOCKED/PENDING DAVIS APPROVAL` — confirm repository provenance and any collaborator credits. Planning treatment remains repository/archive only; repository activity does not establish an event date or playability. |
+| Support | Old-site manifest: two-day Southern Polytechnic State University Summer Game Jam project; public repository and legacy Web Player artifact. | `APPROVED` — Davis was an SE. The old-site manifest says the team had seven developers; collaborator names were not supplied. | Davis's role and seven-person team context may be published. Named collaborator and organizer wording remains `PENDING ATTRIBUTION REVIEW`; keep archive/download-only treatment unless a modern browser build is independently verified. |
+| Flux | Old-site manifest: made at the 2013 HHS Game Jam at Southern Polytechnic State University in Atlanta; one of five winning submissions. Public `CDCJam-14` source repository and legacy Web Player artifact; legacy Dropbox download is recorded in `link-audit.md`. | `APPROVED` — Davis was an SE. No collaborator names were supplied. | Event and winning-submission facts may be attributed to the old-site manifest. Named collaborator/organizer wording remains `PENDING ATTRIBUTION REVIEW`; historical/download treatment only, with no play claim. |
+| Battle of the Masses | Old-site index links the Global Game Jam entry; supplied historical YouTube video and public Global Game Jam reference are source candidates. | `APPROVED` — Davis was Design and Lead Programmer. No collaborator names were supplied. | Role may be published. Team, collaborator, and final event-attribution wording remain `PENDING ATTRIBUTION REVIEW`; historical-video/reference treatment only, with no play claim. |
+| UPBETOD | Public `UPBETOD` repository, public Trello board, and supplied historical YouTube video. The repository README describes a Unity local-multiplayer, controller-based space shooter made for a game jam under time constraints. | `APPROVED` — Davis was an SE. No collaborator names were supplied. | Role and source descriptions may be published. Collaborator and final event-attribution wording remain `PENDING ATTRIBUTION REVIEW`; repository/Trello/video evidence only, with no play claim. |
 
-**Exact missing T004 approval**: For each project, Davis must confirm his role
-and level of ownership, the names and roles of collaborators, whether each
-named organization is an organizer or collaborator, and the final attribution
-text. Until those confirmations are supplied, proposed role or attribution
-wording is non-published pending text only.
+**Exact remaining T004 approval**: Davis's roles above are approved. For each
+team project, collaborator names and roles, whether a named organization should
+be described as an organizer or collaborator, and final attribution text remain
+open when they were not supplied. Do not infer solo authorship, collaborator
+names, or organizational relationships from repository ownership or source
+links.
+
+## Approved source inventory and artifact boundary
+
+The following sources may support historical context, destination labeling, or
+future investigation. They do not authorize a current `Play in browser` claim
+and do not mean that the current site renders any of them.
+
+| Source | Approved evidence use | Boundary |
+| --- | --- | --- |
+| [My-Site repository](https://github.com/deavisdude/My-Site) and [old-site index source](https://github.com/deavisdude/My-Site/blob/master/index.html) | Historical project inventory, including Support, Flux, Battle of the Masses, the unlinked Top 100 BBQ card, and the public UPBETOD Trello link. | Historical source only. Do not copy the old site's phone or email. |
+| [Flux manifest](https://github.com/deavisdude/My-Site/blob/master/Flux/Build.html), `Flux/Build.unity3d`, [Support manifest](https://github.com/deavisdude/My-Site/blob/master/Support%20Web.html), and `Support Web.unity3d` | Historical Unity Web Player manifest/download evidence. | Legacy artifacts are historical/download evidence only. The manifests use Unity Web Player 3.x; Support explicitly says the player is no longer supported in Google Chrome. |
+| [Support source repository](https://github.com/deavisdude/Support), [CDCJam-14 source repository](https://github.com/deavisdude/CDCJam-14), and [UPBETOD source repository](https://github.com/deavisdude/UPBETOD) | Public source and README provenance. | Repository source is not a playable build or proof that the current site should expose private/current implementation details. |
+| [UPBETOD Trello board](https://trello.com/b/TocWvDKP/upbetod) | Historical planning/progress evidence. | Trello is not a playable build and must be labeled as historical/project evidence. |
+| [UPBETOD historical video](https://www.youtube.com/watch?v=Ssr0FPcskLQ) and [Battle of the Masses historical video](https://www.youtube.com/watch?v=indjhyEG1g4) | Historical video evidence; supplied titles and `deavisdude` oEmbed authorship are recorded in `link-audit.md`. | These are historical videos, not playable builds. |
+| [Legacy Flux Dropbox destination](https://www.dropbox.com/sh/gzk67bjp474t3cr/AADmDEu5jzIMQZWZSnAh-hY9a?dl=0) | Historical/download candidate linked by the Flux manifest. | It redirected on 2026-08-01 to the current Dropbox folder URL recorded in `link-audit.md`; download availability is not browser playability. |
+
+Unity rebuild feasibility is an investigation item. A rebuild from public
+source using Unity may be considered if no playable artifact exists in the
+repositories, but no rebuild has been started or validated in this record.
+No browser playability is established for any archive project.
 
 ## Draft role and thesis candidates
 

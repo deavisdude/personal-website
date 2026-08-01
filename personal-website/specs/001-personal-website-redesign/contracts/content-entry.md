@@ -33,13 +33,30 @@ Each rendered project MUST have:
   derived;
 - an honest fallback when no current destination or media is available.
 
+Approved archive roles and evidence are represented as follows:
+
+| Project | Approved Davis role | Contract-safe evidence treatment |
+| --- | --- | --- |
+| BBQ App | `Sole creator` | Archived, text-first account of a TAG student internship partnership with Atlanta BBQ Club; no app URL is invented |
+| Support | `Software Engineer` | Two-day SPSU Summer Game Jam project with a team of seven developers; repository and legacy Unity Web Player artifacts remain non-play evidence |
+| Flux | `Software Engineer` | 2013 HHS Game Jam at SPSU project and one of five winning submissions; legacy page/build and download remain historical/download evidence |
+| Battle of the Masses | `Design and Lead Programmer` | Historical Global Game Jam entry; the supplied video is a reference destination, not a playable build |
+| UPBETOD | `Software Engineer` | Public Unity repository with video/project-history references; repository-only status remains non-play evidence |
+
 ## Destination contract
 
 Every visible link MUST be labeled by its real destination and retain a check
 date. `Play in browser` is reserved for a `browser-verified` record with a
 current supported-browser, start-to-finish gameplay check. A repository,
-download, redirect, historical page, or unknown target MUST use a non-play
-label.
+download, video, redirect, historical page, or unknown target MUST use a
+non-play label. A resolved YouTube/oEmbed response verifies only that video
+metadata is available; it does not verify gameplay.
+
+Legacy Unity Web Player pages MUST use a historical fallback such as “Legacy
+Unity Web Player page; historical evidence only.” Legacy `.unity3d` files MUST
+use a download fallback such as “Legacy Unity Web Player download; not
+browser-playable.” Video records MUST use a video fallback that makes their
+reference-only status clear.
 
 ## WIP contract
 
@@ -50,9 +67,14 @@ not approved, or a production-readiness claim.
 
 ## BBQ App contract
 
-The BBQ App entry MUST use Davis-approved dates, role, Atlanta BBQ Club
-relationship, attribution, and contract-safe wording. If any of those inputs is
-missing, the entry MUST be deferred or reduced to approved historical context.
+The BBQ App entry MUST use the approved June 2014–April 2015 work range and
+the role `Sole creator`. Its public-safe context may state that Davis was
+interning at the TAG Atlanta office, attended an Atlanta Tech Village event,
+and was hired on the spot through the TAG student internship program by
+Atlanta BBQ Club to build its app. The entry MUST retain the TAG student
+internship partnership and Atlanta BBQ Club attribution, remain archived and
+text-first, and MUST NOT invent an app URL, private source, contact detail, or
+unsupported launch/maintenance claim.
 
 ## Release contract
 

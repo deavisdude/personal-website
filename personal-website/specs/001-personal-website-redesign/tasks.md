@@ -57,12 +57,12 @@ infrastructure before any user story implementation.
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete and
 the exact framework, styling system, and visual tokens are approved.
 
-- [ ] T008 Create the approved Profile, Experience Item, Project Entry, Link Evidence, and Media Asset records in `src/content/siteContent.js` according to `specs/001-personal-website-redesign/data-model.md`
-- [ ] T009 Create typed destination, status, verification-date, attribution, and fallback helpers in `src/content/projectLinks.js` according to `specs/001-personal-website-redesign/contracts/content-entry.md`
-- [ ] T010 Establish approved typography, color, spacing, breakpoint, focus, and reduced-motion tokens in `src/index.css` and `src/App.css`
-- [ ] T011 Create semantic page landmarks, skip path, content sections, and responsive shell boundaries in `src/components/SiteShell.jsx`
-- [ ] T012 Configure approved title, description, social metadata, favicon, and public document settings in `index.html`
-- [ ] T013 Create the link, playability, accessibility, privacy, visual, and final-review evidence files in `specs/001-personal-website-redesign/qa/` and `specs/001-personal-website-redesign/link-audit.md`
+- [x] T008 Create the approved Profile, Experience Item, Project Entry, Link Evidence, and Media Asset records in `src/content/siteContent.js` according to `specs/001-personal-website-redesign/data-model.md`
+- [x] T009 Create typed destination, status, verification-date, attribution, and fallback helpers in `src/content/projectLinks.js` according to `specs/001-personal-website-redesign/contracts/content-entry.md`
+- [x] T010 Establish approved typography, color, spacing, breakpoint, focus, and reduced-motion tokens in `src/index.css` and `src/App.css`
+- [x] T011 Create semantic page landmarks, skip path, content sections, and responsive shell boundaries in `src/components/SiteShell.jsx`
+- [x] T012 Configure approved title, description, social metadata, favicon, and public document settings in `index.html`
+- [x] T013 Create the link, playability, accessibility, privacy, visual, and final-review evidence files in `specs/001-personal-website-redesign/qa/` and `specs/001-personal-website-redesign/link-audit.md`
 
 **Checkpoint**: Shared content and accessibility foundations are ready; each
 user story can now be implemented and validated independently.

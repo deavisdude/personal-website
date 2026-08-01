@@ -71,13 +71,21 @@ Represents why a destination is safe and how the visitor should understand it.
 
 | Field | Required | Rules |
 | --- | --- | --- |
+| `id` | yes | Stable content identifier; lowercase kebab-case is preferred and IDs must not be reused for a different destination |
 | `url` | yes | Public URL only; no private source or secret-bearing URL |
-| `type` | yes | `official`, `repository`, `download`, `demo`, `historical`, or `social` |
+| `type` | yes | `official`, `repository`, `download`, `demo`, `historical`, `social`, or `video` |
 | `label` | yes | Describes the actual destination, not an aspirational one |
 | `source` | yes | Repository, event page, profile, or user-approved source |
 | `status` | yes | `verified`, `redirected`, `unavailable`, `unverified`, or `blocked` |
 | `checkedAt` | yes | Date the destination was checked, including when the result is unverified, blocked, redirected, or unavailable |
 | `fallbackLabel` | conditional | Required when status is not verified or destination is not a demo |
+
+`video` is a reference destination for a hosted recording such as YouTube. It
+may document a project, but it is not a playable build and must retain a
+non-play fallback label even when the video URL resolves. Legacy Unity Web
+Player HTML pages are `historical`; `.unity3d` artifacts and other downloadable
+legacy builds are `download`. Neither type establishes current browser
+playability.
 
 ## Media Asset
 
@@ -103,3 +111,5 @@ Represents an optional project screenshot or approved visual.
 4. Every collaborative or fork-derived entry has attribution before publication.
 5. A missing link or media asset never removes the project's title, summary,
    role, status, and honest fallback.
+6. A `video`, `historical`, or `download` record is reference/archive evidence
+   only; it cannot be used to infer `browser-verified` status.
