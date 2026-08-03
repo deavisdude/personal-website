@@ -1,85 +1,76 @@
 # Playability Evidence
 
 **Feature:** Davis Odom Personal Website Redesign
-**Task:** T013 foundational evidence record; final gameplay execution is T035
+**Tasks:** T035 browser-build playability; T036 play-control gate
 **Recorded:** 2026-08-01
-**Overall status:** `BLOCKED`
+**Overall result:** `BLOCKED; no candidate browser build is offered`
 
 ## Evidence boundary
 
-This is the initial playability record created before the redesign has been
-implemented and rendered. It is a repeatable evidence template, not proof that
-any project currently plays in a browser. No `Play in browser` control is
-authorized by this record. A repository, download, HTTP success, or historical
-page is not gameplay evidence.
+The rendered app was opened at `http://127.0.0.1:5174/`. It exposed project
+destination links for Support, Flux, Battle of the Masses, and UPBETOD, but it
+exposed no `Play in browser` control and no `demo` destination. The two current
+WIP entries and BBQ App had no public destination. The rendered page therefore
+offered zero candidate browser builds to run through a start-to-finish loop.
 
-The current planning record identifies Support, Flux, Battle of the Masses,
-UPBETOD, the BBQ App, Restaurant Tracker, and Football Idle Game as possible
-entries. The exact build URL, supported-browser matrix, and start-to-finish
-evidence for any candidate remain unavailable in this pass.
+The Support itch.io destination was inspected as a bounded build-discovery
+check because it is the only rendered download page. It loaded a page titled
+`Support by Stephen Borden` with Windows download text (`54 MB`) and Download
+controls; no browser-run control was present. This is a download-page result,
+not gameplay evidence. Legacy Unity Web Player pages/artifacts are
+source/archive evidence only.
 
-## Current result
+No repository, video, historical page, download page, or HTTP success is
+treated as a playable build. No core-loop, completion/exit, or failure/reload
+claim is made.
 
-| Area | Status | Evidence or blocker |
+## Current results
+
+| Check | Result | Evidence |
 | --- | --- | --- |
-| Playability policy | `PASS` at specification level | The data model and contract reserve `browser-verified` and `Play in browser` for a current start-to-finish browser check. |
-| Rendered play-control inventory | `BLOCKED` | The redesigned project catalog and rendered page are not available for this audit. |
-| Candidate build load and controls | `BLOCKED` | Legacy artifact URLs and public source repositories are recorded, but no current public build or approved local reproducible build has been supplied for this record. |
-| Core loop and completion/exit | `BLOCKED` | No candidate has been run in the supported browser matrix. |
-| Failure/reload behavior | `BLOCKED` | No candidate has been run, so error behavior has not been observed. |
-| Current-browser evidence | `APPROVED BASELINE / EXECUTION OPEN` | `brief.md` now approves current and previous major Chrome, Edge, Firefox, and Safari releases plus current iPhone/Android browsers; no project candidate has yet been run through that matrix. |
+| Rendered project-control inventory | `PASS` | 13 external destination controls were observed in the rendered capture: 2 LinkedIn instances and 11 project destination links across Support, Flux, Battle of the Masses, and UPBETOD. |
+| Candidate browser-build inventory | `PASS; zero candidates` | No rendered link had `type: demo`; no visible label or control said `Play in browser`. The itch.io page offered downloads, not a browser build. |
+| Load and controls | `BLOCKED` | There is no exact browser-build URL exposed by a rendered control. |
+| Core loop | `BLOCKED` | No candidate build and no approved project-specific core-loop definition are available. |
+| Completion and exit | `BLOCKED` | No candidate build or approved completion/exit path is available. |
+| Failure and reload | `BLOCKED` | No candidate build was run, so no failure/recovery behavior was observed. |
+| T036 play-control gate | `PASS` | No project is `browser-verified`; no `Play in browser` control was added. The existing helper requires project status `browser-verified`, link type `demo`, and link status `verified`. |
 
-No `FAIL` is recorded: no candidate execution was performed. `BLOCKED` means
-the prerequisite or observation is missing; it does not mean that a candidate
-passed.
+## Candidate/build checks
 
-## Exact prerequisites before this can become `PASS`
-
-- The content and link records from T008/T009 (or their approved equivalent)
-  identify each candidate's real destination and status.
-- The corresponding project is rendered by the implemented site, and the
-  tested control is the actual visible control a visitor would use.
-- An exact public build URL or a reproducible local build is available. A
-  private repository, internal URL, or unapproved source path cannot satisfy
-  this prerequisite.
-- Davis approves the supported-browser matrix and the project-specific
-  definition of the core loop and completion/exit behavior.
-- The tester can start from a clean session and record the build version/URL,
-  browser and version, viewport, date, controls, outcome, and any fallback.
-- The link audit records the destination as `demo`/`download`/other real type;
-  a repository or download alone does not authorize `browser-verified`.
-
-## Repeatable execution checklist
-
-Run this sequence for every candidate that receives a visible project control.
-Record one row per browser/build combination and link the resulting screenshot
-or recording where available.
-
-| ID | Check | Repeatable procedure | Expected evidence | Current result |
-| --- | --- | --- | --- | --- |
-| PLY-01 | Control and destination | Open the implemented page, locate the project entry, activate the rendered control, and record its label and final destination. | The label matches the actual destination; no unverified item says `Play in browser`. | `BLOCKED` |
-| PLY-02 | Load | From a clean browser session, open the exact build in the approved browser and wait for the first interactive state. Record URL, build/version if exposed, console/network errors, and load time notes. | The intended build loads or the failure is recorded with an honest fallback. | `BLOCKED` |
-| PLY-03 | Controls | Use every documented input path from the initial state, including keyboard and touch/mouse paths supported by the build. | Controls respond as intended without requiring hidden or unavailable input. | `BLOCKED` |
-| PLY-04 | Core loop | Complete the smallest representative gameplay loop from a fresh load. Record the exact actions and visible state changes. | The core loop is reproducible in the approved browser. | `BLOCKED` |
-| PLY-05 | Completion and exit | Reach the documented completion/end state, then exercise the available exit, restart, or return path. | Completion and exit behavior are observable and usable. | `BLOCKED` |
-| PLY-06 | Failure and reload | Trigger a safe failure or invalid-input path, reload, and repeat the start path. Do not create destructive external state. | Failure messaging and recovery are understood; reload does not create a false success. | `BLOCKED` |
-| PLY-07 | Browser matrix | Repeat PLY-02 through PLY-06 for every approved desktop/mobile browser and supported viewport. | Results are dated per browser/build; unsupported environments are labeled. | `BLOCKED` |
-
-## Candidate status template
-
-| Candidate | Exact build/destination | Current status | Why no play claim is allowed yet |
+| Candidate or rendered destination | Load / controls evidence | Core loop, completion/exit, failure/reload | Result and exact limitation |
 | --- | --- | --- | --- |
-| Support | Pending final rendered link audit | `BLOCKED` | Planning sources describe repository/download/history, not current start-to-finish browser evidence. |
-| Flux | No approved live build recorded | `BLOCKED` | The planning record describes historical context and an unavailable old web build. |
-| Battle of the Masses | Pending final rendered link audit | `BLOCKED` | A historical reference is not a playable-build result. |
-| UPBETOD | Pending final rendered link audit | `BLOCKED` | Repository activity does not establish playability. |
-| BBQ App | No approved public build recorded | `BLOCKED` | The text-first archived wording and sole-creator role are approved, but no public app build, reproducible local build, or browser-play evidence is recorded. |
-| Restaurant Tracker | Private/source-safe details pending | `BLOCKED` | No approved public build URL or playable claim is available. |
-| Football Idle Game | Private/source-safe details pending | `BLOCKED` | No approved public build URL or playable claim is available. |
+| Support — `https://skateborden.itch.io/support` | Page loaded in browser; Windows download text and Download controls were visible; no browser-run control | Not applicable: no browser build was offered | `BLOCKED` — an approved public browser build URL and rendered play control are missing |
+| Support legacy Unity Web Player page/artifact | GitHub artifact pages returned HTTP 200 in read-only checks only; not rendered as current controls | Not run | `BLOCKED` — legacy Unity Web Player evidence is not a current supported browser build |
+| Flux legacy Dropbox destination | One redirect reached a Dropbox page that said `This item was deleted` | Not run | `BLOCKED` — no available build, and no browser-play control |
+| Battle of the Masses — YouTube/reference | YouTube video page loaded; Global Game Jam source returned 301 to a target that timed out in browser/request checks | Not run | `BLOCKED` — video/reference destinations are not a browser build |
+| UPBETOD — repository/video/Trello | GitHub and YouTube loaded; Trello reached a resource-warning page | Not run | `BLOCKED` — no browser-build destination is offered |
+| Restaurant Tracker | Text-only current WIP fallback; no external control | Not run | `BLOCKED` — no approved public build URL |
+| Football Idle Game | Text-only current WIP fallback; no external control | Not run | `BLOCKED` — no approved public build URL |
+| BBQ App | Text-only archived fallback; no external control | Not run | `BLOCKED` — no approved public build URL or reproducible browser build |
 
-## Handoff
+## Exact prerequisite to unblock T035/T036
 
-Update this file only after the implementation exposes the candidate and the
-checks above have been run. A candidate that cannot complete the sequence must
-remain `BLOCKED` or be marked `FAIL` with the observed failure and a useful
-non-play fallback; do not upgrade it based on a link response alone.
+An approved public browser build must be added to the rendered project record
+as a real `demo` destination. Before adding `Play in browser`, the exact build
+must be run from the rendered control in a clean supported browser and the
+record must include the URL/version, browser/viewport/date, interactive
+controls, representative core-loop actions and visible state changes,
+completion/exit behavior, and a safe failure/reload path. Until all of that
+exists, keep every play control absent/disabled and keep the project out of
+`browser-verified`.
+
+## Reproducible evidence
+
+From the application root:
+
+```bash
+npm test -- --reporter=dot
+npm run dev -- --host 127.0.0.1
+```
+
+The test run completed with 5 test files and 11 tests passing. The local app
+was inspected at `http://127.0.0.1:5174/`. The browser inventory used a DOM
+snapshot plus a bounded `document.querySelectorAll('a')`/`button` read, then
+opened the exact rendered external destinations. The read-only status and
+redirect command is recorded in `link-audit.md`.

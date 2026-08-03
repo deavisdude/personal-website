@@ -1,73 +1,77 @@
-# Accessibility Evidence
+# Accessibility QA Evidence
 
 **Feature:** Davis Odom Personal Website Redesign
-**Task:** T013 foundational evidence record; final accessibility execution is T038
-**Recorded:** 2026-08-01
-**Overall status:** `BLOCKED`
+
+**Task:** T038 — keyboard, heading, focus, skip-path, reduced-motion, contrast, and narrow-viewport review
+
+**Recorded:** 2026-08-01 19:50 EDT
+
+**Overall status:** `BLOCKED` — all executed checks pass; the live `prefers-reduced-motion: reduce` journey could not be enabled through the available browser control.
 
 ## Evidence boundary
 
-This record defines the checks for the rendered redesign. It does not claim
-that the current source, an application build, or a production deployment has
-passed them. The semantic shell, CSS tokens, mobile navigation, and final
-content are not yet available as a validated user journey in this record.
+This record separates direct source/automated evidence from real rendered-browser evidence. The application root was `/Users/davisodom/Workspace/personal-website/personal-website`, reviewed from base commit `cbe83590acc7ae64db8674bc464defdd221dbd40`. At the start of the run, `personal-website/specs/001-personal-website-redesign/qa/visual.md` had an existing dirty change; by the final check, `qa/privacy.md`, `src/content/siteContent.js`, and an untracked `qa/release.md` were also dirty. Those paths were not touched by T038 and were preserved. No source file or `tasks.md` was edited for T038.
 
-## Current result
+The requested accessibility checks were run against the Vite local preview at `http://127.0.0.1:5173/`. The browser-control API does not expose a browser version; the real key-input run used the connected Chrome extension browser, recorded as `Chrome (version not exposed by control API)`.
 
-| Area | Status | Evidence or blocker |
+## Commands and automated/source evidence
+
+Run from the application root:
+
+```bash
+npm test
+npm run build
+npm run dev -- --host 127.0.0.1
+```
+
+| Evidence | Result | Observation |
 | --- | --- | --- |
-| Required accessibility criteria | `PASS` at planning level | `spec.md` and `quickstart.md` define landmarks, headings, focus, skip path, reduced motion, narrow viewport, and text-first fallback expectations. |
-| Rendered landmarks and heading order | `BLOCKED` | The redesigned page has not been opened for this audit. |
-| Keyboard traversal and skip path | `BLOCKED` | No browser session or implemented shell evidence is recorded. |
-| Focus visibility and accessible names | `BLOCKED` | No rendered controls have been inspected. |
-| 320 CSS-pixel responsive behavior | `PARTIAL` | The approved P1 identity run confirmed a 320×800 viewport with no horizontal overflow and a visible LinkedIn control; the full accessibility journey remains for T038. |
-| Reduced-motion behavior | `BLOCKED` | No implementation or preference-enabled browser run has been checked. |
-| Optional-media and external-destination fallback | `BLOCKED` | Project components/content are not yet available for a disabled-media journey. |
+| `npm test` | `PASS` | 5 test files, 11 tests passed. Existing tests cover rendered heading roles, anchored navigation, mobile-menu labeling, Escape focus return, and text-first project fallbacks. |
+| `npm run build` | `PASS` | Vite 6.4.3 emitted `dist/index.html`, CSS, and JS successfully. |
+| Source inspection | `PASS` | `src/components/SiteShell.jsx:362-469` implements the skip target, named landmarks, sections, and focusable main; `src/components/MobileNavigation.jsx:72-161` implements Escape, labels, `aria-expanded`, `aria-controls`, and native `hidden`; `src/index.css:225-301` and `src/App.css:141-147` implement visible focus and reduced-motion rules; `src/App.css:887-952` implements responsive/mobile rules. |
+| Browser console | `PASS` | Chrome recorded no error or warning messages during the run. |
 
-No `FAIL` is recorded: no rendered accessibility execution was performed.
-`BLOCKED` is an explicit missing-prerequisite state, not a pass.
+## Browser matrix and procedure
 
-## Exact prerequisites before execution
+| Browser surface | Viewport | Preference | Evidence |
+| --- | --- | --- | --- |
+| Codex In-app Browser | 1280×720 default | Default motion | Real DOM/accessibility snapshot matched the semantic page structure. Its key-dispatch path did not advance focus from the document body, so it is not used as keyboard-traversal evidence. |
+| Connected Chrome extension browser | 1920×935 default | Default motion | Full rendered keyboard traversal and desktop activation run. |
+| Connected Chrome extension browser | 320×800 explicit viewport override | Default motion | Mobile menu, focus-return, overflow, and narrow-layout run. |
 
-- T008-T012 (or approved equivalents) provide the content records, link
-  statuses, CSS tokens, semantic shell, and document entry to inspect.
-- The application can be started from the repository root with the commands
-  in `quickstart.md`, and the URL of the exact build under review is recorded.
-- Davis/brief approval supplies the final browser and viewport matrix; the
-  320 CSS-pixel check remains required unless a larger minimum is explicitly
-  approved in `brief.md`.
-- A keyboard-capable browser, a screen-reader/accessible-tree inspection path,
-  and a way to emulate `prefers-reduced-motion: reduce` are available.
-- Optional project media can be disabled or blocked without hiding the title,
-  summary, role/status, attribution, and fallback text.
+The Chrome procedure was: reload the local URL; use `Tab`/`Enter`/`Escape` through the rendered controls; inspect the active element, URL/hash, ARIA state, computed focus styles, DOM landmarks/headings, and scroll widths; then repeat at 320×800. The explicit viewport override was reset after the run.
 
-## Repeatable checks
+## T038 results
 
-Run the checks against the same build that will be released. Record the URL,
-commit/build identifier, browser/version, viewport, preference settings, date,
-and evidence artifact for each run.
+| Area | Status | Real rendered result and evidence |
+| --- | --- | --- |
+| Landmarks | `PASS` | The desktop accessibility tree exposed one banner/header, `Primary navigation`, `Supporting content`, `Main content`, `Site footer`, and the separately named `Social links` navigation. At 320px the primary nav is hidden and the mobile button is exposed; opening it exposes exactly one `Mobile navigation` landmark. No `aria-labelledby` target was missing and no duplicate DOM IDs were found. |
+| Heading hierarchy | `PASS` | The rendered DOM contains exactly one `h1` (`Davis Odom`), followed by `h2` section headings, `h3` content headings, and `h4` destination headings. A bounded DOM check found zero heading-level jumps and zero duplicate IDs. |
+| Keyboard traversal | `PASS` | At 1920×935, a fresh `Tab` cycle reached 17 rendered stops in order: skip link; About, Experience, Work; rail LinkedIn; Support’s 3 links; Flux’s 3 links; Battle of the Masses’ 2 links; UPBETOD’s 3 links; footer LinkedIn. The next `Tab` left focus on `body`, and the following `Tab` returned to the skip link. Hidden mobile controls did not enter the desktop order. All stops had a usable text/ARIA name. |
+| Skip path | `PASS` | From a fresh page, the first `Tab` focused `Skip to main content`. `Enter` produced `#main-content` and focused `<main id="main-content" tabindex="-1">`. |
+| Focus visibility and return | `PASS` | Every real Chrome tab stop reported `outline: solid 3px rgb(255, 209, 212)` with `outline-offset: 4px`. The mobile menu button had the same visible outline. `Escape` closed the menu and returned focus to the `Open menu` button; activating a mobile section link closed the menu and focused the destination section. |
+| Mobile menu labeling | `PASS` | At 320×800, the unique button was `Open menu`, `aria-expanded="false"`, `aria-controls="mobile-navigation"`. `Enter` changed it to `Close menu`, `aria-expanded="true"`, exposed the named `Mobile navigation`, and exposed exactly `About`, `Experience`, and `Work` links. `Escape` restored the closed state and button focus. |
+| Narrow viewport behavior | `PASS` | At exactly 320×800, the closed and open states both reported `document.documentElement.scrollWidth = document.body.scrollWidth = window.innerWidth = 320`. The open panel measured left 16px, right 304px, width 288px; the title and menu button remained visible. |
+| Reduced-motion behavior | `BLOCKED` | Source and rendered CSS evidence passed: the same-origin stylesheet contains `@media (prefers-reduced-motion: reduce)` setting motion variables to `0ms`, `scroll-behavior: auto`, `animation: none`, and `transition: none` (`src/index.css:284-301`). The browser reported `matchMedia('(prefers-reduced-motion: reduce)').matches = false`; this browser-control surface exposed no preference emulation, so the preference-enabled reload and journey remain unverified. |
+| Contrast/readability | `PASS` | Computed rendered colors and ratios are recorded below. Every sampled text/state pair exceeded 4.5:1, and the focus color exceeded 3:1 against the dark background. |
 
-| ID | Check | Repeatable procedure | Expected evidence | Current result |
-| --- | --- | --- | --- | --- |
-| A11Y-01 | Landmarks | Open a clean page and inspect the accessibility tree/DOM for one clear page structure, navigation, main content, section headings, and footer. | Landmarks have meaningful roles/names and no duplicate or empty primary regions. | `BLOCKED` |
-| A11Y-02 | Skip path | Press `Tab` from the fresh page, activate the skip control, and observe the focused target. | Skip control appears, has an accessible name, and moves focus to the main content. | `BLOCKED` |
-| A11Y-03 | Heading order | Traverse or inspect all headings in source order. | Headings describe the information hierarchy without skipped/ambiguous section labels. | `BLOCKED` |
-| A11Y-04 | Keyboard controls | Use only `Tab`, `Shift+Tab`, `Enter`, `Space`, and expected arrow keys through navigation, links, menus, and any project controls. | Every interactive control is reachable, has a usable name, and has a visible focus state. | `BLOCKED` |
-| A11Y-05 | Responsive layout | Check the approved desktop/tablet/mobile widths, including 320 CSS pixels unless superseded by explicit approval. Inspect for clipped content and horizontal scrolling. | Primary content remains readable and no control is obscured or unreachable. | `BLOCKED` |
-| A11Y-06 | Reduced motion | Enable the browser/OS reduced-motion preference, reload, and repeat the primary navigation journey. | Motion is reduced/removed without hiding content or blocking navigation. | `BLOCKED` |
-| A11Y-07 | Fallbacks | Block optional images and external destinations, then inspect every project entry. | Text-first context and honest status/fallback labels remain available. | `BLOCKED` |
-| A11Y-08 | Contrast/readability | Inspect text, links, focus rings, status labels, and controls in the approved dark/red theme at each key state. | Text and focus indicators remain distinguishable and usable; any tool findings are recorded. | `BLOCKED` |
+No `FAIL` was observed. Optional-media failure injection and external-destination outage testing remain outside T038 and belong to the project/link and visual/playability QA records.
 
-## Evidence log template
+## Contrast evidence
 
-| Date | Build/URL | Browser/version | Viewport/preferences | Checks run | Result | Artifact/notes |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2026-08-01 | Not available | Not run | Not run | Planning record only | `BLOCKED` | No live/browser evidence claimed. |
+Ratios were calculated from the computed colors of the rendered local preview and the source token backgrounds. The status-badge rows use the rendered 10% alpha background composited over the project-card surface.
 
-## Handoff
+| Rendered state | Foreground/background | Ratio | Result |
+| --- | --- | ---: | --- |
+| Body text | `#f5f7fa` on `#0b0d10` | 18.13:1 | `PASS` |
+| Muted card/rail text | `#c2cad5` on `#0b0d10` / `#171c23` | 11.77:1 / 10.35:1 | `PASS` |
+| Subtle navigation text | `#a3aebb` on `#0b0d10` | 8.64:1 | `PASS` |
+| Accent links | `#ff9da2` on `#0b0d10` / `#171c23` | 9.82:1 / 8.64:1 | `PASS` |
+| Active navigation | `#f5f7fa` on accent tint `#35191e` | 14.95:1 | `PASS` |
+| Current/warning status labels | `#78d6a8` / `#f2cb78` on rendered alpha badges | 7.91:1 / 8.83:1 | `PASS` |
+| Skip/button text | `#f5f7fa` on raised surface `#1e252f` | 14.38:1 | `PASS` |
+| Focus indicator | `#ffd1d4` on `#0b0d10` | 14.20:1 | `PASS` |
 
-Replace the placeholder row with dated observations after the rendered page,
-approved browser matrix, and fallback states exist. A failed keyboard path,
-hidden focus state, overflow issue, or inaccessible name must be recorded as
-`FAIL` with a reproducible path and fixed before release; an unavailable
-external prerequisite remains `BLOCKED` with its owner and next action.
+## Remaining blocker and repeat
+
+Run the same local URL at 1920×935 and 320×800 with a browser/OS setting that makes `matchMedia('(prefers-reduced-motion: reduce)').matches` true. Repeat the skip, primary/mobile navigation, focus-return, and anchored-section journey, then replace the reduced-motion `BLOCKED` row and overall status if the result passes.

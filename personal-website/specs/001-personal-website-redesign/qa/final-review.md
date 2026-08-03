@@ -1,84 +1,87 @@
 # Final Review Evidence
 
 **Feature:** Davis Odom Personal Website Redesign
-**Task:** T013 foundational evidence record; final approval is T042
+**Task:** T042 final content and design review
 **Recorded:** 2026-08-01
+**Reviewer:** Codex evidence pass; Davis approval is still required
 **Overall status:** `BLOCKED`
 
 ## Evidence boundary
 
-This is the release-gate template created during foundational setup. It is not
-Davis's final content/design approval and does not claim that any user story,
-production build, deployed URL, or browser journey has passed. The unchecked
-implementation and later QA tasks remain prerequisites.
+This is the Phase 6 final-gate record for the local release candidate on
+`codex/redesign`. It consolidates the approved content record, independent user
+story QA, rendered desktop/tablet/mobile checks, link audit, playability gate,
+privacy remediation, and local build/metadata results. It does not claim a
+Vercel deployment, a current browser game build, supplied-media review, or
+Davis's personal final approval.
+
+No observed application defect remains recorded as `FAIL` after the
+source-only-bundle and stale-manifest remediations. The overall gate is
+`BLOCKED` because the remaining prerequisites are external or require Davis's
+review.
 
 ## Current gate result
 
-| Required area | Status | Exact prerequisite/evidence still needed |
+| Required area | Status | Evidence and remaining prerequisite |
 | --- | --- | --- |
-| Shared content/link/document/shell foundation | `BLOCKED` | T008-T012 are implemented and focused checks pass; the foundation still needs integration into the user-story flow and final release review. |
-| P1 identity and current context | `PASS (T019)` | `qa/p1-identity.md` records the local rendered identity, current-first experience, LinkedIn control, desktop/mobile checks, and clean post-fix browser console. |
-| P2 work/archive evidence | `BLOCKED` | The approved/deferred records exist in the content source, but project cards/archive rendering and the requested project-by-project result are not complete. |
-| P3 accessible browsing | `BLOCKED` | Implement narrow navigation/personal context and run the keyboard/responsive journey. |
-| Link audit | `BLOCKED` | T034 must enumerate every rendered external/project link and record final URL, redirects, type, source, status, date, and fallback. |
-| Playability | `BLOCKED` | T035 must run each candidate from the rendered control; no play claim is allowed without start-to-finish evidence. |
-| Visual review | `BLOCKED` | T037 must review approved widths with media enabled/disabled and record evidence. |
-| Accessibility review | `BLOCKED` | T038 must complete keyboard, headings, focus, skip path, reduced-motion, contrast, and overflow checks. |
-| Privacy/content review | `BLOCKED` | T039 must compare source and production output against approvals and public-safe exclusions. |
-| Build/metadata/quickstart review | `BLOCKED` | T040 must run the final build, test runner, metadata review, and quickstart scenarios. |
-| Content approval and deferrals | `PARTIAL` | BBQ wording/role, supplied archive roles, and the explicit no-named-attribution deferral are recorded; T041 still captures final wording and release blockers. |
-| Davis final approval | `BLOCKED` | Davis must review the final content/design artifact and sign each required area. |
+| Public content, provenance, and attribution | `PASS` | `content-approval.md`, `qa/p1-identity.md`, and `qa/p2-work-archive.md` match the approved role, thesis, dates, roles, statuses, BBQ wording, and explicit attribution deferrals. |
+| P1 identity and current context | `PASS` | Local rendered identity/current-context journey passes at desktop and 320px; see `qa/p1-identity.md`. |
+| P2 work/archive evidence | `PASS` | All seven requested entries render useful context, honest status, source/destination labels, and text-first fallbacks; see `qa/p2-work-archive.md`. |
+| P3 accessible browsing | `PASS with preference blocker` | Keyboard, headings, focus, skip path, mobile menu, contrast, overflow, and missing-media checks pass; reduced-motion preference emulation remains `BLOCKED` in `qa/accessibility.md`. |
+| Link audit | `PASS with external limitations` | 13 rendered external anchor instances / 12 unique destinations are recorded with final URL, redirects, type, provenance, status, date, and fallback in `link-audit.md`; LinkedIn/provider and Global Game Jam target limitations remain named. |
+| Playability | `BLOCKED` | No rendered candidate has a current start-to-finish browser build record; no play control is present. See `qa/playability.md`. |
+| Visual and media fallbacks | `PASS with media/deployment blockers` | Local 1440, 768, 390, and 320 viewport reviews and media-disabled fallbacks pass; supplied-media, reduced-motion emulation, and deployed-target checks remain `BLOCKED`. See `qa/visual.md`. |
+| Privacy and employer safety | `PASS locally; deployment blocked` | Source and fresh production artifact contain no internal-only review metadata after remediation; deployed parity is unavailable. See `qa/privacy.md`. |
+| Build, metadata, and quickstart | `PASS locally; deployment/preferences blocked` | 5 test files/11 tests, Vite build, Davis manifest metadata, identity/work scenarios pass; deployment, full preference-specific, and playability scenarios remain blocked. See `qa/release.md`. |
+| Deployment configuration | `PASS` | `vercel.json` targets Vite/dist and `.github/workflows/ci.yml` runs npm ci, tests, and build; no exact target URL or deployment evidence is available. |
+| Davis final content/design approval | `BLOCKED` | Davis must inspect and approve the final content/design artifact before release. |
 
-No `FAIL` is recorded because the feature/release review has not been run. A
-`BLOCKED` gate must not be presented as a release pass.
+## Final release decision
 
-## Exact prerequisites for final sign-off
+`BLOCKED — not deployment-ready.` The local implementation is coherent and
+conservative, but the release gate cannot be marked `PASS` until the named
+external prerequisites are either satisfied or explicitly accepted by Davis:
 
-- All intended user-story implementation is complete against `spec.md`,
-  `data-model.md`, and `contracts/content-entry.md`.
-- A reproducible production build and exact preview/deployed URL are available;
-  the tested artifact matches the artifact proposed for release.
-- The reasonable evergreen browser baseline, visual direction/token freedom,
-  page-view-only analytics scope, and read-only privacy scope are approved in
-  the brief/release review; final rendered and deployed checks remain.
-- The BBQ App wording/role/relationship and the supplied roles for Support,
-  Flux, Battle of the Masses, and UPBETOD are recorded; unavailable
-  collaborator/organizer details are explicitly deferred rather than inferred.
-- `link-audit.md`, `qa/playability.md`, `qa/accessibility.md`,
-  `qa/privacy.md`, and `qa/visual.md` contain dated evidence rather than only
-  planning placeholders.
-- No unresolved `FAIL` remains. Any external prerequisite that cannot be
-  satisfied is named with an owner, fallback, and release decision.
+- exact Vercel preview/production URL and artifact-parity review;
+- a real reduced-motion preference-enabled browser journey;
+- approved supplied-media review if media is added;
+- a current public browser build only if a play control is desired; and
+- Davis's final content/design approval.
 
-## Repeatable final-review sequence
+The current release remains fail-closed: no public resume placeholder, private
+WIP URL, collaborator guess, unsupported claim, or `Play in browser` control is
+used to make the gate appear complete.
 
-1. Read the approved content/brief and inventory the rendered page against the
-   required identity, experience, selected work, archive, personal context,
-   and footer paths.
-2. Run the quickstart build/test commands against the release artifact and
-   record the exact output and URL.
-3. Complete the link, playability, visual, accessibility, and privacy records
-   using the same build and approved browser matrix.
-4. Compare all visible copy, statuses, dates, roles, attribution, media, and
-   fallbacks to the approval/contract records.
-5. Review the production/deployed URL in a clean session, then have Davis
-   record `PASS`, `BLOCKED`, or `FAIL` for each gate with date and initials.
+## Reproducible review sequence
+
+From `personal-website/`:
+
+```bash
+npm test
+npm run build
+git diff --check
+npm run dev -- --host 127.0.0.1 --port 4180
+```
+
+Review the local candidate at `http://127.0.0.1:4180/` in the same build used
+for the evidence files. The local browser run confirmed the rendered identity,
+seven project cards, mobile menu/focus return, 320px no-overflow behavior, and
+zero play controls. Stop the temporary local server after review.
 
 ## Sign-off table
 
-| Area | Result | Reviewer/date | Evidence reference | Notes/remaining action |
+| Area | Result | Reviewer/date | Evidence reference | Notes |
 | --- | --- | --- | --- | --- |
-| Content and provenance | `PARTIAL` | Not assigned | `content-approval.md`, project evidence | BBQ wording/role, supplied archive roles, and explicit attribution deferrals are recorded; final rendered-copy review remains. |
-| Links and playability | `BLOCKED` | Not assigned | `link-audit.md`, `qa/playability.md` | No live/browser evidence recorded. |
-| Accessibility and responsive behavior | `BLOCKED` | Not assigned | `qa/accessibility.md` | No rendered journey recorded. |
-| Visual and media fallbacks | `BLOCKED` | Not assigned | `qa/visual.md` | Tokens/matrix/rendered review pending. |
-| Privacy and employer safety | `BLOCKED` | Not assigned | `qa/privacy.md` | Source/build/deployed audit pending. |
-| Build, metadata, and deployment target | `BLOCKED` | Not assigned | Quickstart/T040 evidence | No release artifact/target evidence recorded. |
-| Davis final approval | `BLOCKED` | Not assigned | This file | Final review has not occurred. |
+| Content and provenance | `PASS` | Codex / 2026-08-01 | `content-approval.md`, `qa/p1-identity.md`, `qa/p2-work-archive.md` | Approved copy and explicit deferrals are recorded. |
+| Links and playability | `BLOCKED` | Codex / 2026-08-01 | `link-audit.md`, `qa/playability.md` | Link audit is complete with named limitations; no current browser build exists. |
+| Accessibility and responsive behavior | `BLOCKED` | Codex / 2026-08-01 | `qa/accessibility.md`, `qa/p3-browse.md` | Objective checks pass; reduced-motion emulation is unavailable. |
+| Visual and media fallbacks | `BLOCKED` | Codex / 2026-08-01 | `qa/visual.md` | Local responsive/media-disabled review passes; supplied-media and deployed-target review are unavailable. |
+| Privacy and employer safety | `PASS locally` | Codex / 2026-08-01 | `qa/privacy.md` | Internal-only bundle metadata was removed and the fresh artifact scan passes. |
+| Build, metadata, and deployment target | `BLOCKED` | Codex / 2026-08-01 | `qa/release.md`, `vercel.json`, `.github/workflows/ci.yml` | Local build/metadata pass; no exact deployment target is available. |
+| Davis final approval | `BLOCKED` | Not assigned | This file | Requires Davis review and acceptance. |
 
 ## Handoff
 
-This file becomes a final review record only after the prerequisite evidence is
-attached or linked. Mark an area `PASS` only from observed evidence and Davis's
-approval where required; mark it `FAIL` for an observed defect; keep it
-`BLOCKED` for a named missing prerequisite.
+T042 is recorded with the required `PASS`, `BLOCKED`, or `FAIL` disposition for
+each area. T043 remains gated: deployment/release notes should be prepared only
+after Davis's final review moves this gate to `PASS`.

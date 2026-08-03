@@ -2,8 +2,7 @@
  * Approved, public-safe content for the personal website.
  *
  * This module is intentionally data-only. Presentation code should consume the
- * named exports or the default `siteContent` object and must not render
- * `visibilityNotes` as visitor-facing copy.
+ * named exports or the default `siteContent` object.
  *
  * @typedef {Object} LinkEvidence
  * @property {string} id
@@ -74,8 +73,6 @@ export const experienceItems = [
     dateLabel: "Current",
     summary:
       "Current software-engineering and developer-tools context at The Home Depot.",
-    visibilityNotes:
-      "Do not publish team, project, incident, metric, architecture, or other confidential employer details.",
   },
 ];
 
@@ -323,8 +320,6 @@ export const projectEntries = [
     media: [],
     fallback:
       "Text-first WIP entry; no public destination or approved screenshot is available.",
-    visibilityNotes:
-      "Keep the source private and do not add an internal URL, unstable implementation detail, or production-readiness claim.",
   },
   {
     id: "football-idle-game",
@@ -347,8 +342,6 @@ export const projectEntries = [
     media: [],
     fallback:
       "Text-first WIP entry; no public destination or approved screenshot is available.",
-    visibilityNotes:
-      "Keep the source private and do not add an internal URL, unstable implementation detail, or production-readiness claim.",
   },
   {
     id: "support",
@@ -386,8 +379,6 @@ export const projectEntries = [
     media: [],
     fallback:
       "Legacy Unity Web Player/download archive context only; no current browser play is claimed.",
-    visibilityNotes:
-      "Role and team-size wording are approved. Render only the public repository, historical announcement, and download-page links; retain legacy Unity artifacts as audit-only provenance and do not render a play control.",
   },
   {
     id: "flux",
@@ -424,8 +415,6 @@ export const projectEntries = [
     media: [],
     fallback:
       "Legacy Unity Web Player/download archive context only; no current browser play is claimed.",
-    visibilityNotes:
-      "Role, winning-submission context, and SPSU event wording are approved. Render the public repository, historical review, and legacy download/archive only; the old-site page/build remain audit-only evidence, never a browser-play control.",
   },
   {
     id: "battle-of-the-masses",
@@ -460,8 +449,6 @@ export const projectEntries = [
     media: [],
     fallback:
       "Historical Global Game Jam and video references only; no current browser play is claimed.",
-    visibilityNotes:
-      "Role and historical project attribution are approved. The video is evidence-only and must not be rendered as Play in browser.",
   },
   {
     id: "upbetod",
@@ -493,8 +480,6 @@ export const projectEntries = [
     media: [],
     fallback:
       "Repository and historical project context only; no current browser play is claimed.",
-    visibilityNotes:
-      "Role and repository provenance are approved. Keep the repository-only status and do not infer a playable build from source, video, or project-board evidence.",
   },
   {
     id: "bbq-app",
@@ -526,8 +511,6 @@ export const projectEntries = [
     media: [],
     fallback:
       "Text-first archived context only; no public app URL, source, or screenshot is assumed.",
-    visibilityNotes:
-      "Dates remain June 2014–April 2015. The approved story is safe to publish at this high level; do not invent an app URL, private source, contact detail, or unsupported client claim.",
   },
 ];
 

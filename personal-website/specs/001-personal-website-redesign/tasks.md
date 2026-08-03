@@ -146,15 +146,15 @@ human, low-friction browsing experience.
 **Purpose**: Prove the complete feature against the constitution, contract, and
 release criteria.
 
-- [ ] T034 [P] Check every published external and project link and record final URL, redirect behavior, destination type, source, status, and verification date in `specs/001-personal-website-redesign/link-audit.md`
-- [ ] T035 [P] Test each candidate browser build from the rendered control for load, controls, core loop, completion/exit, and failure behavior and record results in `specs/001-personal-website-redesign/qa/playability.md`
-- [ ] T036 [P] Add `Play in browser` only for builds with current start-to-finish evidence in `src/content/siteContent.js` and `src/content/projectLinks.js`
-- [ ] T037 [P] Run desktop, tablet, and mobile visual review with optional media enabled and disabled and record evidence in `specs/001-personal-website-redesign/qa/visual.md`
-- [ ] T038 [P] Run keyboard, heading, focus, skip-path, reduced-motion, and contrast review and record evidence in `specs/001-personal-website-redesign/qa/accessibility.md`
-- [ ] T039 [P] Run privacy, employer-safety, private-source, placeholder, attribution, and unsupported-claim searches over source and production output and record evidence in `specs/001-personal-website-redesign/qa/privacy.md`
-- [ ] T040 [P] Run the build, project test runner, metadata review, and quickstart scenarios and record results in `specs/001-personal-website-redesign/qa/release.md`
-- [ ] T041 Update `specs/001-personal-website-redesign/content-approval.md` with final approved copy, explicit deferrals, and remaining `BLOCKED` prerequisites
-- [ ] T042 Complete Davis's final content and design review and record `PASS`, `BLOCKED`, or `FAIL` for each required area in `specs/001-personal-website-redesign/qa/final-review.md`
+- [x] T034 [P] Check every published external and project link and record final URL, redirect behavior, destination type, source, status, and verification date in `specs/001-personal-website-redesign/link-audit.md`
+- [x] T035 [P] Test each candidate browser build from the rendered control for load, controls, core loop, completion/exit, and failure behavior and record results in `specs/001-personal-website-redesign/qa/playability.md`
+- [x] T036 [P] Add `Play in browser` only for builds with current start-to-finish evidence in `src/content/siteContent.js` and `src/content/projectLinks.js`
+- [x] T037 [P] Run desktop, tablet, and mobile visual review with optional media enabled and disabled and record evidence in `specs/001-personal-website-redesign/qa/visual.md`
+- [x] T038 [P] Run keyboard, heading, focus, skip-path, reduced-motion, and contrast review and record evidence in `specs/001-personal-website-redesign/qa/accessibility.md`
+- [x] T039 [P] Run privacy, employer-safety, private-source, placeholder, attribution, and unsupported-claim searches over source and production output and record evidence in `specs/001-personal-website-redesign/qa/privacy.md`
+- [x] T040 [P] Run the build, project test runner, metadata review, and quickstart scenarios and record results in `specs/001-personal-website-redesign/qa/release.md`
+- [x] T041 Update `specs/001-personal-website-redesign/content-approval.md` with final approved copy, explicit deferrals, and remaining `BLOCKED` prerequisites
+- [x] T042 Complete Davis's final content and design review and record `PASS`, `BLOCKED`, or `FAIL` for each required area in `specs/001-personal-website-redesign/qa/final-review.md`
 - [ ] T043 Prepare deployment configuration and release notes only after T042 passes in `README.md` and the approved deployment configuration files
 
 ---
