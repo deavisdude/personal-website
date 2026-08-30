@@ -62,11 +62,9 @@ function orderedExperience(items) {
  */
 export function AboutSection({ profile = defaultProfile, className = '' } = {}) {
   const profileIsValid = isRecord(profile);
-  const thesis = profileIsValid ? textValue(profile.thesis) : null;
-  const locationLabel = profileIsValid ? textValue(profile.locationLabel) : null;
-  const careerContext = profileIsValid ? textValue(profile.careerContext) : null;
+  const personalNote = profileIsValid ? textValue(profile.personalNote) : null;
 
-  if (!thesis) {
+  if (!personalNote) {
     return (
       <div className={classNames('prose', className)}>
         <p className="empty-state">{ABOUT_FALLBACK}</p>
@@ -76,9 +74,7 @@ export function AboutSection({ profile = defaultProfile, className = '' } = {}) 
 
   return (
     <div className={classNames('prose', className)}>
-      <p>{thesis}</p>
-      {locationLabel ? <p className="card__meta">Based in {locationLabel}.</p> : null}
-      {careerContext ? <p>{careerContext}</p> : null}
+      <p>{personalNote}</p>
     </div>
   );
 }

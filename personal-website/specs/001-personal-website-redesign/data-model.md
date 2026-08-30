@@ -17,6 +17,7 @@ Represents the public identity shown in the opening, About section, and footer.
 | `thesis` | yes | One concise, human-readable statement |
 | `locationLabel` | yes | Broad phrasing such as Georgia or metro Atlanta; never exact location |
 | `careerContext` | yes | High-level current context; employer-safe |
+| `profileImage` | optional | Approved public image with meaningful alt text and a text fallback; camera metadata must not be published |
 | `interests` | optional | Approved Georgia/UGA/Braves or other semi-personal details |
 | `socialLinks` | optional | Public destinations only; each has link evidence |
 | `resumeLink` | optional | Included only after a safe public copy is approved |

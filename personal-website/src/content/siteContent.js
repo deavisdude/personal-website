@@ -27,6 +27,11 @@
  * @property {'event'|'profile'|'repository'|'current'|'planning'} type
  * @property {string} source
  * @property {string} detail
+ *
+ * @typedef {Object} ProfileImage
+ * @property {string} src
+ * @property {string} alt
+ * @property {string} [fallback]
  */
 
 const linkedInProfileLink = {
@@ -51,6 +56,12 @@ export const profile = {
   locationLabel: "Georgia, USA",
   careerContext:
     "Current software-engineering and developer-tools context at The Home Depot.",
+  /** @type {ProfileImage} */
+  profileImage: {
+    src: "/assets/davis-odom-profile.jpg",
+    alt: "Davis Odom smiling in a white shirt and orange apron.",
+    fallback: "Davis Odom profile photo unavailable.",
+  },
   interests: [
     { label: "Place", text: "Georgia" },
     { label: "University", text: "University of Georgia" },

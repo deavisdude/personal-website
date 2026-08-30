@@ -263,6 +263,33 @@
   max-width: var(--reading-max-width);
 }
 
+.identity-rail__portrait {
+  width: min(100%, 14rem);
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 0.0625rem solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-surface);
+}
+
+.identity-rail__portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 27%;
+}
+
+.identity-rail__portrait--fallback {
+  display: grid;
+  place-items: center;
+  color: var(--color-accent-strong);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
 .identity-rail__eyebrow,
 .section__eyebrow {
   margin: 0;

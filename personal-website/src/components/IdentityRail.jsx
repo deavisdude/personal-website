@@ -1,5 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { profile as fallbackProfile } from '../content/siteContent';
+
+const DEFAULT_PROFILE_IMAGE = {
+  src: '/assets/davis-odom-profile.jpg',
+  alt: 'Davis Odom smiling in a white shirt and orange apron.',
+  fallback: 'Davis Odom profile photo unavailable.',
+};
 
 const DEFAULT_PROFILE = {
   name: 'Davis Odom',
@@ -9,11 +15,62 @@ const DEFAULT_PROFILE = {
   locationLabel: 'Georgia, USA',
   careerContext:
     'Current software-engineering and developer-tools context at The Home Depot.',
+  profileImage: DEFAULT_PROFILE_IMAGE,
   socialLinks: [],
 };
 
 function textOrFallback(value, fallback) {
   return typeof value === 'string' && value.trim() ? value.trim() : fallback;
+}
+
+function publicImageSource(value) {
+  if (typeof value !== 'string') {
+    return null;
+  }
+
+  const source = value.trim();
+
+  if (
+    !source ||
+    /(?:private|internal|secret|token|password|credential|\.env|node_modules)/i.test(
+      source,
+    )
+  ) {
+    return null;
+  }
+
+  if (/^https?:\/\//i.test(source)) {
+    return source;
+  }
+
+  return /^(?:\.?\.?\/|\/)(?!\/)/.test(source) ? source : null;
+}
+
+function resolveProfileImage(source, fallback) {
+  const candidate =
+    source.profileImage === undefined
+      ? fallback?.profileImage ?? DEFAULT_PROFILE.profileImage
+      : source.profileImage;
+
+  if (!candidate || typeof candidate !== 'object' || Array.isArray(candidate)) {
+    return null;
+  }
+
+  const src = publicImageSource(candidate.src);
+  const alt = textOrFallback(candidate.alt, 'Profile photo');
+
+  if (!src) {
+    return null;
+  }
+
+  return {
+    src,
+    alt,
+    fallback: textOrFallback(
+      candidate.fallback,
+      `${textOrFallback(source.name, DEFAULT_PROFILE.name)} profile photo unavailable.`,
+    ),
+  };
 }
 
 function resolveProfile(profile) {
@@ -46,8 +103,50 @@ function resolveProfile(profile) {
         DEFAULT_PROFILE.careerContext,
       ),
     ),
+    profileImage: resolveProfileImage(source, fallbackProfile),
     socialLinks: Array.isArray(source.socialLinks) ? source.socialLinks : [],
   };
+}
+
+function profileInitials(name) {
+  const initials = textOrFallback(name, DEFAULT_PROFILE.name)
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join('')
+    .toUpperCase();
+
+  return initials || 'DO';
+}
+
+function ProfilePortrait({ image, name }) {
+  const [imageFailed, setImageFailed] = useState(false);
+
+  if (!image || imageFailed) {
+    return (
+      <div
+        aria-label={image?.fallback || `${name} profile photo unavailable.`}
+        className="identity-rail__portrait identity-rail__portrait--fallback"
+        role="img"
+      >
+        <span aria-hidden="true">{profileInitials(name)}</span>
+      </div>
+    );
+  }
+
+  return (
+    <div className="identity-rail__portrait">
+      <img
+        alt={image.alt}
+        decoding="async"
+        fetchPriority="high"
+        loading="eager"
+        onError={() => setImageFailed(true)}
+        src={image.src}
+      />
+    </div>
+  );
 }
 
 function isPublicSocialLink(link) {
@@ -135,6 +234,12 @@ function IdentityRail({
 
   return (
     <section aria-labelledby={headingId} className="identity-rail" id={id}>
+      {resolvedProfile.profileImage ? (
+        <ProfilePortrait
+          image={resolvedProfile.profileImage}
+          name={resolvedProfile.name}
+        />
+      ) : null}
       <p className="identity-rail__eyebrow">{resolvedProfile.locationLabel}</p>
       <h1 className="identity-rail__name" id={headingId}>
         {resolvedProfile.name}

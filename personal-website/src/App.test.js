@@ -23,6 +23,11 @@ test('renders the P1 identity and current-first experience flow', () => {
     screen.getByRole('heading', { name: 'Davis Odom', level: 1 }),
   ).toBeInTheDocument();
   expect(
+    screen.getByRole('img', {
+      name: 'Davis Odom smiling in a white shirt and orange apron.',
+    }),
+  ).toHaveAttribute('src', '/assets/davis-odom-profile.jpg');
+  expect(
     screen.getAllByText('Senior Software Engineer').length,
   ).toBeGreaterThan(0);
   expect(screen.getByText('Georgia, USA')).toBeInTheDocument();
@@ -34,6 +39,18 @@ test('renders the P1 identity and current-first experience flow', () => {
     screen.getAllByText(/Current software-engineering and developer-tools context/i)
       .length,
   ).toBeGreaterThan(0);
+  const aboutSection = screen
+    .getByRole('heading', { name: 'About' })
+    .closest('section');
+  expect(aboutSection).toHaveTextContent(
+    'I enjoy building useful tools and playful creative experiments.',
+  );
+  expect(aboutSection).not.toHaveTextContent(
+    'I’m a software engineer from Georgia who builds tools, games, simulations and anything else that inspires me.',
+  );
+  expect(aboutSection).not.toHaveTextContent(
+    'Current software-engineering and developer-tools context at The Home Depot.',
+  );
   expect(
     screen.getByRole('link', { name: 'LinkedIn profile' }),
   ).toHaveAttribute('href', 'https://www.linkedin.com/in/davisodom');
