@@ -26,6 +26,21 @@ function AnalyticsBootstrap() {
 }
 
 function App() {
+  useEffect(() => {
+    const updatePointerGlow = ({ clientX, clientY }) => {
+      document.documentElement.style.setProperty("--pointer-x", `${clientX}px`);
+      document.documentElement.style.setProperty("--pointer-y", `${clientY}px`);
+    };
+
+    window.addEventListener("mousemove", updatePointerGlow, { passive: true });
+
+    return () => {
+      window.removeEventListener("mousemove", updatePointerGlow);
+      document.documentElement.style.removeProperty("--pointer-x");
+      document.documentElement.style.removeProperty("--pointer-y");
+    };
+  }, []);
+
   const content = siteContent ?? {};
   const profile = content.profile ?? {};
   const experience = Array.isArray(content.experience) ? content.experience : [];

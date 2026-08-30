@@ -87,3 +87,16 @@ test('provides anchored navigation and updates the active section', () => {
   expect(experienceLink).toHaveAttribute('aria-current', 'location');
   expect(aboutLink).not.toHaveAttribute('aria-current');
 });
+
+test('tracks the mouse position through CSS variables', () => {
+  render(React.createElement(App));
+
+  fireEvent.mouseMove(window, { clientX: 240, clientY: 360 });
+
+  expect(document.documentElement.style.getPropertyValue('--pointer-x')).toBe(
+    '240px',
+  );
+  expect(document.documentElement.style.getPropertyValue('--pointer-y')).toBe(
+    '360px',
+  );
+});
