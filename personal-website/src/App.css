@@ -592,6 +592,15 @@
   background: var(--color-surface-raised);
 }
 
+.experience-card--easter-egg {
+  cursor: pointer;
+}
+
+.experience-card--easter-egg:focus-visible {
+  outline: 0.1875rem solid var(--color-focus);
+  outline-offset: 0.25rem;
+}
+
 .card--featured {
   border-color: var(--color-accent-action);
   background:
@@ -746,6 +755,43 @@
 
 .project-card {
   gap: var(--space-4);
+}
+
+.home-depot-easter-egg-layer {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.home-depot-easter-egg-tool {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  font-size: 2.25rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 0.5rem rgb(255 115 123 / 0.72));
+  user-select: none;
+  will-change: transform, opacity;
+}
+
+.home-depot-easter-egg-tool img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-card--easter-egg {
+    cursor: default;
+  }
+
+  .home-depot-easter-egg-layer {
+    display: none;
+  }
 }
 
 .project-card__eyebrow {

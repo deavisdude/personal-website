@@ -100,3 +100,16 @@ test('tracks the mouse position through CSS variables', () => {
     '360px',
   );
 });
+
+test('spawns a random tool from the Home Depot work card', () => {
+  render(React.createElement(App));
+
+  fireEvent.click(
+    screen.getByRole('button', {
+      name: 'The Home Depot work. Click for a surprise.',
+    }),
+    { clientX: 240, clientY: 360 },
+  );
+
+  expect(screen.getByTestId('home-depot-tool')).toHaveAttribute('data-tool');
+});
